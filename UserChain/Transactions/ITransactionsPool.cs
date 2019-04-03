@@ -1,6 +1,6 @@
 ﻿namespace RuleChain.Transactions
 {
-    internal class TransactionsPool : ITransactionsPool
+    internal interface ITransactionsPool
     {
         
     }
