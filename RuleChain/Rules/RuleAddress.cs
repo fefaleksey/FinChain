@@ -1,12 +1,10 @@
-﻿namespace UserChain
+﻿namespace RuleChain.Rules
 {
-    public sealed class Address : IAddress
+    public sealed class RuleAddress : IRuleAddress
     {
-//        public byte[] ToByteArray() => _address;
-
         public override string ToString() => System.Text.Encoding.UTF8.GetString(Data);
 
-        public Address(byte[] address)
+        public RuleAddress(byte[] address)
         {
             this.Data = address;
         }

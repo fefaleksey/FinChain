@@ -1,4 +1,4 @@
-﻿namespace RuleChain
+﻿namespace UserChain.Accounts
 {
     public sealed class Address : IAddress
     {

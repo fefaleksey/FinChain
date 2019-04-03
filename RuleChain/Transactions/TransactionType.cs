@@ -2,7 +2,8 @@
 {
     public enum TransactionType
     {
-        Deploy,
-        CallContractFunction
+        DeployNewRule,
+        ChangeRule,
+        RemoveRule
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RuleChain
+namespace RuleChain.Chain
 {
     internal class Chain : IChain
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UserChain.Accounts;
 
 namespace UserChain.Transactions
 {
@@ -9,9 +10,9 @@ namespace UserChain.Transactions
         DateTime Time { get; }
 
         TransactionStatus Status { get; }
-        List<UserType> GovernBy { get; }    //TODO: qn: enum or something else?
-        IAddress Sender { get; }
-        IAddress Receiver { get; }
+        List<AccountType> GovernBy { get; }    //TODO: qn: enum or something else?
+        IAccount Sender { get; }
+        IAccount Receiver { get; }
 
         TransactionType Type();
     }

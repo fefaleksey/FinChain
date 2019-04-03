@@ -1,6 +1,6 @@
-﻿namespace RuleChain.Transactions
+﻿namespace UserChain.Accounts
 {
-    public enum UserType
+    public enum AccountType
     {
         Government,
         Organization,

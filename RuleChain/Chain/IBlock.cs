@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using RuleChain.Transactions;
 
-namespace RuleChain
+namespace RuleChain.Chain
 {
     internal interface IBlock
     {
@@ -10,6 +10,6 @@ namespace RuleChain
         List<ITransaction> Transactions { get; }
         HashCode Hash { get; }
         HashCode PreviousBlockHash { get; }
-        IAddress FormedBy { get; }
+//        IRuleAddress FormedBy { get; }
     }
 }
