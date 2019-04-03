@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RuleChain.Rules;
+using RuleChain.Transactions.Enums;
 using UserChain.Accounts;
 
 namespace RuleChain.Transactions
