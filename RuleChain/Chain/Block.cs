@@ -8,15 +8,14 @@ namespace RuleChain.Chain
     {
         public DateTime CreationTime { get; }
         public List<ITransaction> Transactions { get; }
+        public HashCode? PreviousBlockHash { get; }
         public HashCode Hash { get; }
-        public HashCode PreviousBlockHash { get; }
-        
-        public Block(List<ITransaction> transactions, DateTime creationTime, HashCode previousBlockHash)
+
+        public Block(List<ITransaction> transactions, HashCode? previousBlockHash)
         {
             Transactions = transactions;
-            CreationTime = creationTime;
+            CreationTime = DateTime.UtcNow;
             PreviousBlockHash = previousBlockHash;
-            
             // TODO: calculate hash
         }
     }

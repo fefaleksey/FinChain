@@ -4,8 +4,9 @@ namespace RuleChain.Chain
 {
     internal interface IChain
     {
+        IState State { get; }
         IBlock Genesis { get; }
-        DateTime CreationTime { get; }
-        
+
+        void AddBlock(IBlock block);
     }
 }

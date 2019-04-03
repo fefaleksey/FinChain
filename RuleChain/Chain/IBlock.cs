@@ -4,12 +4,11 @@ using RuleChain.Transactions;
 
 namespace RuleChain.Chain
 {
-    internal interface IBlock
+    public interface IBlock
     {
         DateTime CreationTime { get; }
         List<ITransaction> Transactions { get; }
+        HashCode? PreviousBlockHash { get; }
         HashCode Hash { get; }
-        HashCode PreviousBlockHash { get; }
-//        IRuleAddress FormedBy { get; }
     }
 }
