@@ -1,0 +1,7 @@
+﻿namespace RuleChain
+{
+    interface IController
+    {
+        
+    }
+}
