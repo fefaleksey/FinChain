@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RuleChain.Transactions
+namespace UserChain.Transactions
 {
     public class Transaction : ITransaction
     {
