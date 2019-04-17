@@ -6,41 +6,23 @@ using UserChain.Accounts;
 
 namespace RuleChain.Transactions
 {
-    public class RuleTransaction : IRuleTransaction
+    public class RuleTransaction
     {
         public DateTime Time { get; }
-        public TransactionStatus Status { get; }
-        public List<AccountType> AffectsOn { get; }
-        public HashCode? OldRuleHash { get; }
-        public IRule Rule { get; }
-
-        // DO NOT USE!!! IT IS FOR SWAGGER!!!
-        public RuleTransaction()
-        {
-            
-        }
+        public TransactionStatus Status { get; set; }
+        public TransactionType Type { get; }
+        public Guid ActionId { get; }
+        public int Step { get; }
+        public int Position { get; }
         
-        public RuleTransaction(IRule rule)
+        public RuleTransaction(Guid actionId, int step, int position, TransactionType type)
         {
-            Rule = rule;
-            Time = DateTime.UtcNow;
+            ActionId = actionId;
+            Step = step;
+            Position = position;
+            Type = type;
             Status = TransactionStatus.Created;
-            AffectsOn = Rule?.AffectsOn;
-            OldRuleHash = null;
-        }
-        
-        public RuleTransaction(IRule rule, HashCode oldRuleHash)
-        {
-            Rule = rule;
-            OldRuleHash = oldRuleHash;
             Time = DateTime.UtcNow;
-            Status = TransactionStatus.Created;
-            AffectsOn = Rule.AffectsOn;
-        }
-        
-        public TransactionType Type()
-        {
-            throw new NotImplementedException();
         }
     }
 }

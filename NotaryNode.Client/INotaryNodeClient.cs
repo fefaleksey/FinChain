@@ -7,6 +7,6 @@ namespace NotaryNode.Client
     public interface INotaryNodeClient
     {
         void AddTransactionEvent(string nodeUrl, TransactionEvent transactionEvent);
-        void AddTransactionToPool(string nodeUrl, IRuleTransaction ruleTransaction);
+        void AddTransactionToPool(string nodeUrl, RuleTransaction ruleTransaction);
     }
 }

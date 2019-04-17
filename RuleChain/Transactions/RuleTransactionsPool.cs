@@ -1,24 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RuleChain.Transactions
 {
     internal class RuleTransactionsPool : IRuleTransactionsPool
     {
-        private readonly Queue<IRuleTransaction> _transactions = new Queue<IRuleTransaction>();       
+        private readonly Queue<RuleTransaction> _transactions = new Queue<RuleTransaction>();       
         
-        public void Push(IRuleTransaction ruleTransaction)
+        public void Push(RuleTransaction ruleTransaction)
         {
             _transactions.Enqueue(ruleTransaction);
         }
 
-        public IRuleTransaction Get()
+        public RuleTransaction Get()
         {
             return _transactions.Dequeue();
         }
 
-        public List<IRuleTransaction> Get(int quantity)
+        public List<RuleTransaction> Get(int quantity)
         {
-            throw new System.NotImplementedException();
+            var limit = Math.Min(quantity, _transactions.Count);
+            var list = new  List<RuleTransaction>();
+
+            for (int i = 0; i < limit; i++)
+            {
+                list.Add(_transactions.Dequeue());
+            }
+
+            return list;
         }
     }
 }

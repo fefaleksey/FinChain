@@ -2,8 +2,7 @@
 {
     public enum TransactionType
     {
-        DeployNewRule,
-        ChangeRule,
-        RemoveRule
+        AddRequirements,
+        RemoveRequirements
     }
 }

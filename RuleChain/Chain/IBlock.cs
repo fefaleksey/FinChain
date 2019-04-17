@@ -7,7 +7,7 @@ namespace RuleChain.Chain
     public interface IBlock
     {
         DateTime CreationTime { get; }
-        List<IRuleTransaction> Transactions { get; }
+        List<RuleTransaction> Transactions { get; }
         HashCode? PreviousBlockHash { get; }
         HashCode Hash { get; }
     }
