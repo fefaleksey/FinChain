@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using NotaryNode.Client;
 using System.Configuration;
+using System.Threading.Tasks.Dataflow;
 using Microsoft.IdentityModel.Protocols;
+using RuleChain.Transactions;
 
 namespace Government.Controllers
 {
@@ -34,7 +36,7 @@ namespace Government.Controllers
             }
         }
         
-        [HttpPost, Route("addEvent")] 
+        [HttpPost, Route("addEvent")]
         public void AddTransactionEvent([FromBody] TransactionEvent transactionEvent)
         {
             var urls = _configuration.GetSection("NotaryNodes").Get<string[]>();
@@ -45,6 +47,29 @@ namespace Government.Controllers
             {
                 _notaryNodeClient.AddTransactionEvent(url, transactionEvent);
             }
+        }
+        
+        [HttpPost, Route("addToPool")]
+        public void AddTransactionToPool([FromBody] RuleTransaction ruleTransaction)
+        {
+            var urls = _configuration.GetSection("NotaryNodes").Get<string[]>();
+            
+//            var urls = new []{"http://localhost:5000"};
+            
+            foreach (var url in urls)
+            {
+                _notaryNodeClient.AddTransactionToPool(url, ruleTransaction);
+            }
+        }
+
+        private void BroadcastBlock()
+        {
+//            var urls = _configuration.GetSection("NotaryNodes").Get<string[]>();
+//            
+//            foreach (var url in urls)
+//            {
+//                _notaryNodeClient.AddTransactionEvent(url, transactionEvent);
+//            }
         }
     }
 }

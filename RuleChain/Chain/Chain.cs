@@ -13,7 +13,7 @@ namespace RuleChain.Chain
             State = new State();
         }
         
-        public void AddBlock(IBlock block)
+        public void CommitBlock(IBlock block)
         {
             throw new NotImplementedException();
         }

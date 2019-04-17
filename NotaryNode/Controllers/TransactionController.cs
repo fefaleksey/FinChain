@@ -1,16 +1,26 @@
 ﻿using FinChain.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RuleChain.Transactions;
 
 namespace NotaryNode.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")]    
     [ApiController]
     public class TransactionsController : ControllerBase
     {
-        [HttpPost, Route("addEvent")] //api/transactions/addEvent
+        [HttpPost]//, Route("addEvent")] //api/transactions/addEvent
         public void AddTransactionEvent([FromBody] TransactionEvent transactionEvent)
         {
             int a;
+        }
+
+        [HttpPost, Route("addToPool")]
+        public void AddTransactionToPool([FromBody] RuleTransaction ruleTransaction)
+        {
+            int a;
+            
+//            var obj =  JsonConvert.DeserializeObject<RuleTransaction>(JsonString, settings);
         }
     }
 }

@@ -7,11 +7,11 @@ namespace RuleChain.Chain
     internal class Block : IBlock
     {
         public DateTime CreationTime { get; }
-        public List<ITransaction> Transactions { get; }
+        public List<IRuleTransaction> Transactions { get; }
         public HashCode? PreviousBlockHash { get; }
         public HashCode Hash { get; }
 
-        public Block(List<ITransaction> transactions, HashCode? previousBlockHash)
+        public Block(List<IRuleTransaction> transactions, HashCode? previousBlockHash)
         {
             Transactions = transactions;
             CreationTime = DateTime.UtcNow;

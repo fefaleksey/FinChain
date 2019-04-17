@@ -6,7 +6,7 @@ using UserChain.Accounts;
 
 namespace RuleChain.Transactions
 {
-    public class Transaction : ITransaction
+    public class RuleTransaction : IRuleTransaction
     {
         public DateTime Time { get; }
         public TransactionStatus Status { get; }
@@ -14,7 +14,13 @@ namespace RuleChain.Transactions
         public HashCode? OldRuleHash { get; }
         public IRule Rule { get; }
 
-        public Transaction(IRule rule)
+        // DO NOT USE!!! IT IS FOR SWAGGER!!!
+        public RuleTransaction()
+        {
+            
+        }
+        
+        public RuleTransaction(IRule rule)
         {
             Rule = rule;
             Time = DateTime.UtcNow;
@@ -23,7 +29,7 @@ namespace RuleChain.Transactions
             OldRuleHash = null;
         }
         
-        public Transaction(IRule rule, HashCode oldRuleHash)
+        public RuleTransaction(IRule rule, HashCode oldRuleHash)
         {
             Rule = rule;
             OldRuleHash = oldRuleHash;

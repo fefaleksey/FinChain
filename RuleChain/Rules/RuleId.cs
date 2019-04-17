@@ -7,6 +7,8 @@ namespace RuleChain.Rules
 
         public RuleId(string @alias)
         {
+            var testAddress = new byte[] {1};
+            RuleAddress = new RuleAddress(testAddress);
             Alias = alias;
             // TODO: initialize RuleAddress
         }

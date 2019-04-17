@@ -6,7 +6,7 @@
         {
             new UrlBuilder("localhost:500/api")
                 .WithPath("transactions")
-                .WithPath("1"); 
+                .WithPath("1");
         }
 
         public UrlBuilder WithPath(string part)

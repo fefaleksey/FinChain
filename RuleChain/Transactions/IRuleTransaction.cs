@@ -6,7 +6,7 @@ using UserChain.Accounts;
 
 namespace RuleChain.Transactions
 {
-    public interface ITransaction
+    public interface IRuleTransaction
     {
         
         DateTime Time { get; }

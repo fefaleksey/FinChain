@@ -1,4 +1,5 @@
 ﻿using System;
+using UserChain;
 
 namespace RuleChain.Chain
 {
@@ -7,6 +8,6 @@ namespace RuleChain.Chain
         IState State { get; }
         IBlock Genesis { get; }
 
-        void AddBlock(IBlock block);
+        void CommitBlock(IBlock block);
     }
 }

@@ -3,6 +3,7 @@
     public enum TransactionType
     {
         Deploy,
-        CallContractFunction
+        CallContractFunction,
+        
     }
 }

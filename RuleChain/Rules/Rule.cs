@@ -11,6 +11,10 @@ namespace RuleChain.Rules
         public HashCode Hash { get; }
         public List<AccountType> AffectsOn { get; }
 
+        public Rule()
+        {
+            Id = new RuleId("Test Rule");
+        }
 
         public bool Check()
         {
