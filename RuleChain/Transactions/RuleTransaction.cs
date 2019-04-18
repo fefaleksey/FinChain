@@ -6,7 +6,7 @@ using UserChain.Accounts;
 
 namespace RuleChain.Transactions
 {
-    public class RuleTransaction : IRuleTransaction
+    public class RuleTransaction
     {
         public DateTime Time { get; }
         public TransactionStatus Status { get; set; }
@@ -23,35 +23,6 @@ namespace RuleChain.Transactions
             Type = type;
             Status = TransactionStatus.Created;
             Time = DateTime.UtcNow;
-        }
-        
-        public void Apply(IVisitor visitor)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    interface IRuleTransaction
-    {
-        DateTime Time { get; }
-        TransactionStatus Status { get; set; }
-        Guid ActionId { get; }
-        int Step { get; }
-        int Position { get; }
-
-        void Apply(IVisitor visitor);
-    }
-
-    interface IVisitor
-    {
-        void Apply(RuleTransaction transaction);
-    }
-
-    class RuleTransactionVisitor : IVisitor
-    {
-        public void Apply(RuleTransaction transaction)
-        {
-            throw new NotImplementedException();
         }
     }
 }
