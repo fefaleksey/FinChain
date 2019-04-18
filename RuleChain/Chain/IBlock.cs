@@ -8,7 +8,7 @@ namespace RuleChain.Chain
     {
         DateTime CreationTime { get; }
         List<RuleTransaction> Transactions { get; }
-        HashCode? PreviousBlockHash { get; }
+        HashCode PreviousBlockHash { get; }
         HashCode Hash { get; }
     }
 }

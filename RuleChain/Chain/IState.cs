@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using RuleChain.Rules;
+﻿using System;
+using System.Collections.Generic;
+using Actions;
 
 namespace RuleChain.Chain
 {
     public interface IState
     {
-        List<IRule> Rules { get; }
-        
         void UpdateState(IBlock block);
+        IRequirements GetRequirement(Guid id);
+        List<IRequirements> GetAllRequirements();
     }
 }

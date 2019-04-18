@@ -1,13 +1,14 @@
 ﻿using System;
-using UserChain;
+using System.Collections.Generic;
+using Actions;
 
 namespace RuleChain.Chain
 {
     internal interface IChain
     {
-        IState State { get; }
         IBlock Genesis { get; }
-
         void CommitBlock(IBlock block);
+        IRequirements GetRequirement(Guid id);
+        List<IRequirements> GetAllRequirements();
     }
 }
