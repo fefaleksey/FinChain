@@ -7,7 +7,7 @@ namespace RuleChain.State
     public interface IState
     {
         void UpdateState(IBlock block);
-        IActionRequirements GetRequirement(ActionId requirementId);
+        IActionRequirements GetRequirement(RequirementId requirementId);
         List<IActionRequirements> GetAllRequirements();
     }
 }

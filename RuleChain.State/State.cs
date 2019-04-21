@@ -8,7 +8,11 @@ namespace RuleChain.State
 {
     public class State : IState
     {
-        private readonly Dictionary<ActionId, IActionRequirements> _requirements = new Dictionary<ActionId, IActionRequirements>();
+        private readonly Dictionary<RequirementId, IActionRequirements> _requirements =
+            new Dictionary<RequirementId, IActionRequirements>();
+        
+        private readonly Dictionary<ActionId, IAction> _actions = new Dictionary<ActionId, IAction>();
+        
         public List<IActionRequirements> Rules { get; } = new List<IActionRequirements>();
         
         public void UpdateState(IBlock block)
@@ -25,17 +29,36 @@ namespace RuleChain.State
             {
                 return;
             }
-
             switch (transaction.Type)
             {
                 case TransactionType.AddRequirements:
                 {
-                    AddRequirementsHandler(transaction);
+                    AddRequirements_Handler(transaction);
                     break;
                 }
                 case TransactionType.RemoveRequirements:
                 {
-                    RemoveRequirementsHandler(transaction);
+                    RemoveRequirements_Handler(transaction);
+                    break;
+                }
+                case TransactionType.AddActionToRequirement:
+                {
+                    AddActionToRequirement_Handler(transaction);
+                    break;
+                }
+                case TransactionType.RemoveActionFromRequirement:
+                {
+                    throw new NotImplementedException();
+                    break;
+                }
+                case TransactionType.AddAction:
+                {
+                    throw new NotImplementedException();
+                    break;
+                }
+                case TransactionType.RemoveAction:
+                {
+                    throw new NotImplementedException();
                     break;
                 }
                 default:
@@ -45,21 +68,26 @@ namespace RuleChain.State
             }
         }
 
-        void AddRequirementsHandler(RuleTransaction transaction)
+        private void AddRequirements_Handler(RuleTransaction transaction)
         {
-            var requirementToChange = _requirements[transaction.Id];
-            requirementToChange.AddAction(transaction.Id, transaction.Step);
+            _requirements.Add(transaction.RequirementId, transaction.Requirements);
+        }
+        
+        private void AddActionToRequirement_Handler(RuleTransaction transaction)
+        {
+            var requirementToChange = _requirements[transaction.RequirementId];
+            requirementToChange.AddAction(transaction.Action, transaction.Step);
         }
 
-        void RemoveRequirementsHandler(RuleTransaction transaction)
+        private void RemoveRequirements_Handler(RuleTransaction transaction)
         {
-            throw new NotImplementedException();
+            _requirements.Remove(transaction.RequirementId);
         }
-        public IActionRequirements GetRequirement(ActionId requirementId)
+
+        public IActionRequirements GetRequirement(RequirementId requirementId)
         {
             return _requirements[requirementId];
         }
-
 
         public List<IActionRequirements> GetAllRequirements()
         {
