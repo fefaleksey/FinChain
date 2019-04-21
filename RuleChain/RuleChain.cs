@@ -6,20 +6,17 @@ using RuleChain.State;
 
 namespace RuleChain
 {
-    internal class Chain : IChain
+    public class RuleRuleChain : IRuleChain
     {
         private readonly IState _state = new State.State();
         public IBlock Genesis { get; }
 
-        public Chain()
+        public RuleRuleChain()
         {
             Genesis = new Block(null, new HashCode());
         }
 
-        public void CommitBlock(IBlock block)
-        {
-            throw new NotImplementedException();
-        }
+        public void CommitBlock(IBlock block) => _state.UpdateState(block);
 
         public IActionRequirements GetRequirement(RequirementId id) => _state.GetRequirement(id);
 

@@ -1,17 +1,17 @@
 using FinChain.Models.Actions;
-using RuleChain.State;
+using RuleChain;
 
 namespace RuleChain.Controller
 {
     public class RuleChainController : IRuleChainController
     {
-        private readonly IState _state;
+        private readonly IRuleChain _chain;
 
-        private RuleChainController(IState state)
+        private RuleChainController(IRuleChain chain)
         {
-            _state = state;
+            _chain = chain;
         }
 
-        public IActionRequirements GetRequirement(RequirementId id) => _state.GetRequirement(id);
+        public IActionRequirements GetRequirement(RequirementId id) => _chain.GetRequirement(id);
     }
 }

@@ -4,7 +4,7 @@ using RuleChain.Models;
 
 namespace RuleChain
 {
-    internal interface IChain
+    public interface IRuleChain
     {
         IBlock Genesis { get; }
         void CommitBlock(IBlock block);
