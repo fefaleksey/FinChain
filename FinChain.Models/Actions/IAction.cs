@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using UserChain.Accounts;
-
 namespace Actions
 {
     public interface IAction
     {
-        IRequirements Requirements { get; }
+        ActionId RequirementsId { get; }
 
         bool IsActive { get; }
 

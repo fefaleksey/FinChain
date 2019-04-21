@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FinChain.Models
+﻿namespace FinChain.Models
 {
     public class TransactionEvent
     {

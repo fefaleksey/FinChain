@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using UserChain.Accounts;
+using FinChain.Models.Accounts;
+using FinChain.Models.Actions;
 
 namespace Actions
 {
@@ -19,7 +20,8 @@ namespace Actions
             // transfer transaction
         }
 
-        public IRequirements Requirements { get; }
+        public IActionRequirements ActionRequirements { get; }
+        public ActionId RequirementsId { get; }
         public bool IsActive { get; }
 
         public void Execute(params object[] list)
