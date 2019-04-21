@@ -1,6 +1,6 @@
 ﻿using FinChain.Models;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using RuleChain.Models;
 using RuleChain.Transactions;
 
 namespace NotaryNode.Controllers

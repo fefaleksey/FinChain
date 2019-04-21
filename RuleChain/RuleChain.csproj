@@ -6,7 +6,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Actions\Actions.csproj" />
-      <ProjectReference Include="..\UserChain\UserChain.csproj" />
+      <ProjectReference Include="..\RuleChain.Models\RuleChain.Models.csproj" />
+      <ProjectReference Include="..\RuleChain.State\RuleChain.State.csproj" />
     </ItemGroup>
 
 </Project>

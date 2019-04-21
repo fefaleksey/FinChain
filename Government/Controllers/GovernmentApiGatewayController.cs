@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using NotaryNode.Client;
-using System.Configuration;
-using System.Threading.Tasks.Dataflow;
-using Microsoft.IdentityModel.Protocols;
+using RuleChain.Models;
 using RuleChain.Transactions;
 
 namespace Government.Controllers

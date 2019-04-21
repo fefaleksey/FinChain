@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Actions;
+using FinChain.Models.Actions;
+using RuleChain.Models;
 
 namespace RuleChain.Chain
 {
@@ -8,7 +9,7 @@ namespace RuleChain.Chain
     {
         IBlock Genesis { get; }
         void CommitBlock(IBlock block);
-        IRequirements GetRequirement(Guid id);
-        List<IRequirements> GetAllRequirements();
+        IActionRequirements GetRequirement(ActionId id);
+        List<IActionRequirements> GetAllRequirements();
     }
 }

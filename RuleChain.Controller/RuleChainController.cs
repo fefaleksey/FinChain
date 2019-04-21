@@ -1,5 +1,5 @@
-using Actions;
-using RuleChain.Chain;
+using FinChain.Models.Actions;
+using RuleChain.State;
 
 namespace RuleChain.Controller
 {
@@ -12,6 +12,6 @@ namespace RuleChain.Controller
             _state = state;
         }
 
-        public IRequirements GetRequirement(ActionId id) => _state.GetRequirement(id);
+        public IActionRequirements GetRequirement(ActionId id) => _state.GetRequirement(id);
     }
 }

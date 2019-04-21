@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Actions;
-using RuleChain.Transactions;
-using RuleChain.Transactions.Enums;
+using FinChain.Models.Actions;
+using RuleChain.Models;
+using RuleChain.Models.Enums;
 
-namespace RuleChain.Chain
+namespace RuleChain.State
 {
     public class State : IState
     {
@@ -55,9 +55,9 @@ namespace RuleChain.Chain
         {
             throw new NotImplementedException();
         }
-        public IActionRequirements GetRequirement(ActionId id)
+        public IActionRequirements GetRequirement(ActionId requirementId)
         {
-            return _requirements[id];
+            return _requirements[requirementId];
         }
 
 

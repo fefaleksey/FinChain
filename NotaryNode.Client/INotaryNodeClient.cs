@@ -1,5 +1,5 @@
-using System.Net.Http;
 using FinChain.Models;
+using RuleChain.Models;
 using RuleChain.Transactions;
 
 namespace NotaryNode.Client

@@ -1,7 +1,9 @@
+using FinChain.Models.Actions;
+
 namespace RuleChain.Controller
 {
-    interface IRuleChainController
+    public interface IRuleChainController
     {
-        
+        IActionRequirements GetRequirement(ActionId id);
     }
 }

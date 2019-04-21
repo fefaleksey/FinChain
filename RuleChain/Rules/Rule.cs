@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-using RuleChain.Transactions;
-using UserChain.Accounts;
+using FinChain.Models.Accounts;
 
 namespace RuleChain.Rules
 {

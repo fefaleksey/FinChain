@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FinChain.Models\FinChain.Models.csproj" />
+      <ProjectReference Include="..\RuleChain.Models\RuleChain.Models.csproj" />
     </ItemGroup>
 
 </Project>

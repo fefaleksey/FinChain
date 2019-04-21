@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Actions;
+using FinChain.Models.Actions;
+using RuleChain.Models;
+using RuleChain.State;
 
 namespace RuleChain.Chain
 {
     internal class Chain : IChain
     {
-        private readonly IState _state = new State();
+        private readonly IState _state = new State.State();
         public IBlock Genesis { get; }
 
         public Chain()
@@ -19,8 +22,8 @@ namespace RuleChain.Chain
             throw new NotImplementedException();
         }
 
-        public IRequirements GetRequirement(Guid id) => _state.GetRequirement(id);
+        public IActionRequirements GetRequirement(ActionId id) => _state.GetRequirement(id);
 
-        public List<IRequirements> GetAllRequirements() => _state.GetAllRequirements();
+        public List<IActionRequirements> GetAllRequirements() => _state.GetAllRequirements();
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using Actions;
+using FinChain.Models.Actions;
+using RuleChain.Models;
 
-namespace RuleChain.Chain
+namespace RuleChain.State
 {
     public interface IState
     {
         void UpdateState(IBlock block);
-        IActionRequirements GetRequirement(ActionId id);
+        IActionRequirements GetRequirement(ActionId requirementId);
         List<IActionRequirements> GetAllRequirements();
     }
 }

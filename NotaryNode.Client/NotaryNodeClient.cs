@@ -1,13 +1,9 @@
-﻿using System;
-using System.Globalization;
-using System.Net;
-using System.Net.Http;
-using System.Runtime.Serialization.Json;
+﻿using System.Net.Http;
 using System.Text;
 using FinChain.Models;
 using RuleChain.Transactions;
 using Newtonsoft.Json;
-using RuleChain.Rules;
+using RuleChain.Models;
 
 namespace NotaryNode.Client
 {

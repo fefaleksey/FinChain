@@ -1,9 +1,10 @@
 using Actions;
+using FinChain.Models.Actions;
 
 namespace RuleChain.Chain
 {
     interface IOLDController
     {
-        IRequirements GetRequirement(ActionId id);
+        IActionRequirements GetRequirement(ActionId id);
     }
 }

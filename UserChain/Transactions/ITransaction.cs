@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using UserChain.Accounts;
+using FinChain.Models.Accounts;
 
 namespace UserChain.Transactions
 {

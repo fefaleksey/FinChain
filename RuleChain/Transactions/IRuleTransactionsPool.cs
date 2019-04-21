@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using RuleChain.Models;
 
 namespace RuleChain.Transactions
 {
