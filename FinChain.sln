@@ -16,6 +16,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserChain", "UserChain\User
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actions", "Actions\Actions.csproj", "{C0166E95-CDC8-4344-B887-36416FC14119}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleChain.Controller", "RuleChain.Controller\RuleChain.Controller.csproj", "{5560D4B2-A9B5-4E21-93B7-71E5DB0069D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleChain.State", "RuleChain.State\RuleChain.State.csproj", "{826425EC-8F3F-40E3-9CEB-35013154FBEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleChain.Models", "RuleChain.Models\RuleChain.Models.csproj", "{F4E877F9-7010-4FE6-81DC-A5F293A580C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +60,17 @@ Global
 		{C0166E95-CDC8-4344-B887-36416FC14119}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0166E95-CDC8-4344-B887-36416FC14119}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0166E95-CDC8-4344-B887-36416FC14119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5560D4B2-A9B5-4E21-93B7-71E5DB0069D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5560D4B2-A9B5-4E21-93B7-71E5DB0069D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5560D4B2-A9B5-4E21-93B7-71E5DB0069D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5560D4B2-A9B5-4E21-93B7-71E5DB0069D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{826425EC-8F3F-40E3-9CEB-35013154FBEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{826425EC-8F3F-40E3-9CEB-35013154FBEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{826425EC-8F3F-40E3-9CEB-35013154FBEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{826425EC-8F3F-40E3-9CEB-35013154FBEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E877F9-7010-4FE6-81DC-A5F293A580C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E877F9-7010-4FE6-81DC-A5F293A580C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E877F9-7010-4FE6-81DC-A5F293A580C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E877F9-7010-4FE6-81DC-A5F293A580C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
