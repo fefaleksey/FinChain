@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UserChain.Accounts
+namespace FinChain.Models.Accounts
 {
     public class Account : IAccount
     {

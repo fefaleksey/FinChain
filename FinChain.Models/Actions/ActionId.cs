@@ -1,6 +1,6 @@
 using System;
 
-namespace Actions
+namespace FinChain.Models.Actions
 {
     public class ActionId : IEquatable<ActionId>
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Actions
+namespace FinChain.Models.Actions
 {
     public interface IActionRequirements
     {

@@ -1,4 +1,4 @@
-﻿namespace RuleChain.Transactions.Enums
+﻿namespace RuleChain.Models.Enums
 {
     public enum TransactionType
     {

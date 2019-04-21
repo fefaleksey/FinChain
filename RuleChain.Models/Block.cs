@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using RuleChain.Transactions;
 
-namespace RuleChain.Chain
+namespace RuleChain.Models
 {
-    internal class Block : IBlock
+    public class Block : IBlock
     {
         public DateTime CreationTime { get; }
         public List<RuleTransaction> Transactions { get; }

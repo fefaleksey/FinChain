@@ -1,8 +1,8 @@
 ﻿using System;
-using Actions;
-using RuleChain.Transactions.Enums;
+using FinChain.Models.Actions;
+using RuleChain.Models.Enums;
 
-namespace RuleChain.Transactions
+namespace RuleChain.Models
 {
     public class RuleTransaction
     {

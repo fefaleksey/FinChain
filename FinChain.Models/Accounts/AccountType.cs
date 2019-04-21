@@ -1,4 +1,4 @@
-﻿namespace UserChain.Accounts
+﻿namespace FinChain.Models.Accounts
 {
     public enum AccountType
     {

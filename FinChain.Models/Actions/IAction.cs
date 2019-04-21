@@ -1,4 +1,4 @@
-namespace Actions
+namespace FinChain.Models.Actions
 {
     public interface IAction
     {
