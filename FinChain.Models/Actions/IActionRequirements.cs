@@ -4,12 +4,12 @@ namespace FinChain.Models.Actions
 {
     public interface IActionRequirements
     {
-        ActionId RequirementsId { get; }
+        RequirementId Id { get; }
 
-        List<ActionId> PeekActions();
-        List<ActionId> DequeueActions();
-        List<List<ActionId>> GetAllRequirements();
-        void AddAction(ActionId actionId, int step);
+        List<IAction> PeekActions();
+        List<IAction> DequeueActions();
+        List<List<IAction>> GetAllRequirements();
+        void AddAction(IAction action, int step);
         void RemoveAction(int step, int position);
     }
 }

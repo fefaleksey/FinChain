@@ -2,7 +2,8 @@ namespace FinChain.Models.Actions
 {
     public interface IAction
     {
-        ActionId RequirementsId { get; }
+        ActionId Id { get; }
+        RequirementId RequirementsId { get; }
 
         bool IsActive { get; }
 

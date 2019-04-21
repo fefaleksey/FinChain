@@ -5,26 +5,28 @@ namespace Actions
 {
     public class TransferFromPersonToPersonActionRequirements : IActionRequirements
     {
-        public ActionId RequirementsId { get; } = new ActionId();
-        private List<List<ActionId>> LinksQueue { get; set; }
+        public RequirementId Id { get; } = new RequirementId();
+        private List<List<IAction>> LinksQueue { get; set; }
 
         public TransferFromPersonToPersonActionRequirements()
         {
-            LinksQueue = new List<List<ActionId>>();
+            LinksQueue = new List<List<IAction>>();
         }
 
-        public void AddAction(ActionId actionId, int step) => LinksQueue[step].Add(actionId);
+        public void AddAction(IAction action, int step) => LinksQueue[step].Add(action);
         
         public void RemoveAction(int step, int position) => LinksQueue[step].RemoveAt(position);
         
-        public List<ActionId> PeekActions() => LinksQueue[0];
+        public List<IAction> PeekActions() => LinksQueue[0];
         
-        public List<List<ActionId>> GetAllRequirements() => LinksQueue;
+        public List<List<IAction>> GetAllRequirements() => LinksQueue;
 
-        public List<ActionId> DequeueActions()
+        public List<IAction> DequeueActions()
         {
             var actions = PeekActions();
-            RemoveAction(0,0);
+            const int step = 0;
+            const int position = 0;
+            RemoveAction(step, position);
             return actions;
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
+using RuleChain.Controller;
 
 
 namespace Actions
@@ -9,14 +10,18 @@ namespace Actions
 
     public class TransferFromPersonToPersonAction : IAction
     {
-        public ActionId RequirementsId { get; }
-        private IActionRequirements ActionRequirements { get; }
+        public ActionId Id { get; }
+        public RequirementId RequirementsId { get; }
         public bool IsActive { get; private set; }
+        
+        private IActionRequirements ActionRequirements { get; }
+        private readonly IRuleChainController _controller;
 
         public List<AccountType> ExecuteOrder { get; }
         
-        public TransferFromPersonToPersonAction(ActionId requirementsId)
+        public TransferFromPersonToPersonAction(RequirementId requirementsId, IRuleChainController controller)
         {
+            _controller = controller;
             RequirementsId = requirementsId;
             ExecuteOrder = new List<AccountType> {AccountType.Person};
             ActionRequirements = new TransferFromPersonToPersonActionRequirements();
@@ -55,13 +60,8 @@ namespace Actions
 
         private void ExecuteRequirements()
         {
-            var actionIds = ActionRequirements.DequeueActions();
-
-            foreach (var id in actionIds)
-            {
-//                var action =
-//                action.Execute(); //TODO: ???
-            }
+            var requirements = _controller.GetRequirement(RequirementsId);
+//            var actions = _controller
         }
     }
 }
