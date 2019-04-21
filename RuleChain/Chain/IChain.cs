@@ -9,7 +9,7 @@ namespace RuleChain.Chain
     {
         IBlock Genesis { get; }
         void CommitBlock(IBlock block);
-        IActionRequirements GetRequirement(ActionId id);
+        IActionRequirements GetRequirement(RequirementId id);
         List<IActionRequirements> GetAllRequirements();
     }
 }

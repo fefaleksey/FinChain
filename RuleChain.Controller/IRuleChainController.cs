@@ -4,6 +4,6 @@ namespace RuleChain.Controller
 {
     public interface IRuleChainController
     {
-        IActionRequirements GetRequirement(ActionId id);
+        IActionRequirements GetRequirement(RequirementId id);
     }
 }

@@ -22,7 +22,7 @@ namespace RuleChain.Chain
             throw new NotImplementedException();
         }
 
-        public IActionRequirements GetRequirement(ActionId id) => _state.GetRequirement(id);
+        public IActionRequirements GetRequirement(RequirementId id) => _state.GetRequirement(id);
 
         public List<IActionRequirements> GetAllRequirements() => _state.GetAllRequirements();
     }

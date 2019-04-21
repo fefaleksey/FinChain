@@ -1,7 +1,6 @@
 ﻿using FinChain.Models;
 using Microsoft.AspNetCore.Mvc;
 using RuleChain.Models;
-using RuleChain.Transactions;
 
 namespace NotaryNode.Controllers
 {

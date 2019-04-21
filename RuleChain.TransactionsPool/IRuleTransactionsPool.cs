@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using RuleChain.Models;
 
-namespace RuleChain.Transactions
+namespace RuleChain.TransactionsPool
 {
     internal interface IRuleTransactionsPool
     {

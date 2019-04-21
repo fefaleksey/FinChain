@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using NotaryNode.Client;
 using RuleChain.Models;
-using RuleChain.Transactions;
 
 namespace Government.Controllers
 {

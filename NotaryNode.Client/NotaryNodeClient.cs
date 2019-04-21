@@ -1,7 +1,6 @@
 ﻿using System.Net.Http;
 using System.Text;
 using FinChain.Models;
-using RuleChain.Transactions;
 using Newtonsoft.Json;
 using RuleChain.Models;
 

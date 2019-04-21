@@ -12,6 +12,6 @@ namespace RuleChain.Controller
             _state = state;
         }
 
-        public IActionRequirements GetRequirement(ActionId id) => _state.GetRequirement(id);
+        public IActionRequirements GetRequirement(RequirementId id) => _state.GetRequirement(id);
     }
 }

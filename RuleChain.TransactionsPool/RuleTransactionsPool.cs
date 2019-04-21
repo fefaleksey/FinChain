@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using RuleChain.Models;
 
-namespace RuleChain.Transactions
+namespace RuleChain.TransactionsPool
 {
     internal class RuleTransactionsPool : IRuleTransactionsPool
     {
