@@ -9,16 +9,23 @@ namespace RuleChain.Models
         public DateTime Time { get; }
         public TransactionStatus Status { get; set; }
         public TransactionType Type { get; }
-        public ActionId Id { get; }
+        public ActionId ActionId { get; }
+        public RequirementId RequirementId { get; }
+        public IAction Action { get; }
+        public IActionRequirements Requirements { get; }
         public int Step { get; }
         public int Position { get; }
 
-        public RuleTransaction(ActionId id, int step, int position, TransactionType type)
+        public RuleTransaction(TransactionType type, ActionId actionId, RequirementId requirementId, IAction action, 
+            IActionRequirements requirements, int step, int position)
         {
-            Id = id;
+            Type = type;
+            ActionId = actionId;
+            RequirementId = requirementId;
+            Action = action;
+            Requirements = requirements;
             Step = step;
             Position = position;
-            Type = type;
             Status = TransactionStatus.Created;
             Time = DateTime.UtcNow;
         }

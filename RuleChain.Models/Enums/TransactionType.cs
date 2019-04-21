@@ -3,6 +3,10 @@
     public enum TransactionType
     {
         AddRequirements,
-        RemoveRequirements
+        RemoveRequirements,
+        AddActionToRequirement,
+        RemoveActionFromRequirement,
+        AddAction,
+        RemoveAction
     }
 }
