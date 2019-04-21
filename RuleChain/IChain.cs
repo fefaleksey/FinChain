@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Actions;
 using FinChain.Models.Actions;
 using RuleChain.Models;
 
-namespace RuleChain.Chain
+namespace RuleChain
 {
     internal interface IChain
     {

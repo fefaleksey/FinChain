@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Actions;
 using FinChain.Models.Actions;
 using RuleChain.Models;
 using RuleChain.State;
 
-namespace RuleChain.Chain
+namespace RuleChain
 {
     internal class Chain : IChain
     {
