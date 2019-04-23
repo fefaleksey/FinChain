@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="wwwroot\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Swashbuckle.AspNetCore">
+          <Version>5.0.0-rc2</Version>
+        </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger">
+          <Version>5.0.0-rc2</Version>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FinChain.Models\FinChain.Models.csproj" />
+      <ProjectReference Include="..\NotaryNode.Client\NotaryNode.Client.csproj" />
+    </ItemGroup>
+
+</Project>
