@@ -1,12 +1,13 @@
+using FinChain.Models.Accounts;
+
 namespace FinChain.Models.Actions
 {
     public interface IAction
     {
         ActionId Id { get; }
-        RequirementId RequirementsId { get; }
 
         bool IsActive { get; }
 
-        void Execute(params object[] list);
+        ActionExecutionResult Execute(Account sender, params object[] list);
     }
 }
