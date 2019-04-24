@@ -2,17 +2,15 @@
 
 namespace FinChain.Models.Accounts
 {
-    public class Account : IAccount
+    public class Account
     {
-        public Guid Address { get; }
-        public string Alias { get; }
+        public Address AccountAddress { get; }
         public AccountType Type { get; }
         public uint Balance { get; set; }
 
-        public Account(IAddress address, string @alias, AccountType type)
+        public Account(AccountType type)
         {
-            Address = Guid.NewGuid();
-            Alias = alias;
+            AccountAddress = new Address();
             Type = type;
             Balance = 0;
         }
