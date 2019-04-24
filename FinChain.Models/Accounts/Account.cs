@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FinChain.Models.Accounts
+﻿namespace FinChain.Models.Accounts
 {
     public class Account
     {
