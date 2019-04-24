@@ -6,7 +6,7 @@ namespace UserChain.Transactions
 {
     public class Transaction : ITransaction
     {
-        public Transaction(IAccount sender, IAccount receiver)
+        public Transaction(Account sender, Account receiver)
         {
             Sender = sender;
             Receiver = receiver;
@@ -19,8 +19,8 @@ namespace UserChain.Transactions
         public DateTime Time { get; }
         public TransactionStatus Status { get; }
         public List<AccountType> GovernBy { get; }
-        public IAccount Sender { get; }
-        public IAccount Receiver { get; }
+        public Account Sender { get; }
+        public Account Receiver { get; }
 
         public TransactionType Type()
         {

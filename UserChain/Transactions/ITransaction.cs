@@ -11,8 +11,8 @@ namespace UserChain.Transactions
 
         TransactionStatus Status { get; }
         List<AccountType> GovernBy { get; }    //TODO: qn: enum or something else?
-        IAccount Sender { get; }
-        IAccount Receiver { get; }
+        Account Sender { get; }
+        Account Receiver { get; }
 
         TransactionType Type();
     }
