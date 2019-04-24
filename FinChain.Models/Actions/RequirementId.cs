@@ -2,15 +2,15 @@ using System;
 
 namespace FinChain.Models.Actions
 {
-    public class RequirementId : IEquatable<ActionId>
+    public class RequirementId : IEquatable<RequirementId>
     {
-        public Guid Id { get; }
+        private Guid Id { get; }
 
         public RequirementId()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
 
-        public bool Equals(ActionId other) => Id.Equals(other.Id);
+        public bool Equals(RequirementId other) => Id.Equals(other.Id);
     }
 }
