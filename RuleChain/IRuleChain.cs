@@ -8,5 +8,6 @@ namespace RuleChain
         IBlock Genesis { get; }
         void CommitBlock(IBlock block);
         IActionRequirements GetRequirements(ActionType type);
+        IBlock GetLastBlock();
     }
 }

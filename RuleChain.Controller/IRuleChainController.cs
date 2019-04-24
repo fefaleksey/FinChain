@@ -8,5 +8,7 @@ namespace RuleChain.Controller
         void CommitBlock(IBlock block);
         
         IActionRequirements GetRequirements(ActionType type);
+
+        int GetLastBlockHash();
     }
 }

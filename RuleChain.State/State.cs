@@ -13,8 +13,11 @@ namespace RuleChain.State
         
         public List<IActionRequirements> Rules { get; } = new List<IActionRequirements>();
         
-        public IActionRequirements GetRequirements(ActionType type) => _requirements[type];
-        
+        public IActionRequirements GetRequirements(ActionType type)
+        {
+            return _requirements.ContainsKey(type) ? _requirements[type] : null;
+        }
+
         public void UpdateState(IBlock block)
         {
             foreach (var transaction in block.Transactions)

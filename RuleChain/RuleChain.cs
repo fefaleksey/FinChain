@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FinChain.Models.Actions;
 using RuleChain.Models;
 using RuleChain.State;
@@ -10,13 +11,25 @@ namespace RuleChain
         private readonly IState _state = new State.State();
         public IBlock Genesis { get; }
 
+        private List<IBlock> _chain = new List<IBlock>();
+        
         public RuleChain()
         {
-            Genesis = new Block(null, new HashCode());
+            Genesis = new Block(null, 0);
+            _chain.Add(Genesis);
         }
 
-        public void CommitBlock(IBlock block) => _state.UpdateState(block);
+        public void CommitBlock(IBlock block)
+        {
+            _chain.Add(block);
+            _state.UpdateState(block);
+        }
 
         public IActionRequirements GetRequirements(ActionType type) => _state.GetRequirements(type);
+        
+        public IBlock GetLastBlock()
+        {
+            return _chain[_chain.Count - 1];
+        }
     }
 }
