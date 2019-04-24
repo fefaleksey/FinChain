@@ -5,7 +5,6 @@ namespace Actions
 {
     public class TransferFromPersonToPersonActionRequirements : IActionRequirements
     {
-        public RequirementId Id { get; } = new RequirementId();
         private List<List<ActionType>> Requirements { get; set; }
 
         public TransferFromPersonToPersonActionRequirements()

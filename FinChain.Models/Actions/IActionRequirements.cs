@@ -4,8 +4,6 @@ namespace FinChain.Models.Actions
 {
     public interface IActionRequirements
     {
-        RequirementId Id { get; }
-
         List<ActionType> PeekActions();
         List<ActionType> DequeueActions();
         List<List<ActionType>> GetAllRequirements();

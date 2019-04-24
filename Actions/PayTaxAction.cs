@@ -7,7 +7,6 @@ namespace Actions
     public class PayTaxAction : IAction
     {
         public ActionId Id { get; }
-        public RequirementId RequirementsId { get; }
         public bool IsActive { get; }
         
         private Account _taxService = new Account(AccountType.Government);
