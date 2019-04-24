@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using FinChain.Models.Actions;
 using RuleChain;
+using RuleChain.Models;
 
 namespace RuleChain.Controller
 {
@@ -7,11 +9,13 @@ namespace RuleChain.Controller
     {
         private readonly IRuleChain _chain;
 
-        private RuleChainController(IRuleChain chain)
+        public RuleChainController(IRuleChain chain)
         {
             _chain = chain;
         }
 
-        public IActionRequirements GetRequirement(RequirementId id) => _chain.GetRequirement(id);
+        public void CommitBlock(IBlock block) => _chain.CommitBlock(block);
+
+        public IActionRequirements GetRequirements(ActionType type) => _chain.GetRequirements(type);
     }
 }
