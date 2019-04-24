@@ -7,23 +7,24 @@ namespace RuleChain.Models
     {
         public DateTime CreationTime { get; }
         public List<RuleTransaction> Transactions { get; }
-        public HashCode PreviousBlockHash { get; }
-        public HashCode Hash { get; } = new HashCode();
+        public int PreviousBlockHash { get; }
+        public int Hash { get; private set; }
 
-        public Block(List<RuleTransaction> transactions, HashCode previousBlockHash)
+        public Block(List<RuleTransaction> transactions, int previousBlockHash)
         {
             Transactions = transactions;
             CreationTime = DateTime.UtcNow;
             PreviousBlockHash = previousBlockHash;
-            // TODO: calculate hash
             CalculateHash();
         }
 
         private void CalculateHash()
         {
-            Hash.Add(CreationTime);
-            Hash.Add(Transactions);
-            Hash.Add(PreviousBlockHash);
+            var hashCode = new HashCode();
+            hashCode.Add(CreationTime);
+            hashCode.Add(Transactions);
+            hashCode.Add(PreviousBlockHash);
+            Hash = hashCode.ToHashCode();
         }
     }
 }

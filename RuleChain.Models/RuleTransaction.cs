@@ -35,14 +35,14 @@ namespace RuleChain.Models
         public static RuleTransaction CreateAddActionTransaction(ActionType actionTypeKey,
             IActionRequirements requirements)
         {
-            var transaction = new RuleTransaction(TransactionType.AddRequirements, actionTypeKey, ActionType.Null
+            var transaction = new RuleTransaction(TransactionType.AddAction, actionTypeKey, ActionType.Null
                 , requirements, 0, 0);
             return transaction;
         }
 
         public static RuleTransaction CreateRemoveActionTransaction(ActionType actionTypeKey)
         {
-            var transaction = new RuleTransaction(TransactionType.AddRequirements, actionTypeKey, ActionType.Null
+            var transaction = new RuleTransaction(TransactionType.RemoveAction, actionTypeKey, ActionType.Null
                 , null, 0, 0);
             return transaction;
         }
