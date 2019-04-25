@@ -6,20 +6,30 @@ using RuleChain.State;
 
 namespace RuleChain
 {
-    public class RuleRuleChain : IRuleChain
+    public class RuleChain : IRuleChain
     {
         private readonly IState _state = new State.State();
         public IBlock Genesis { get; }
 
-        public RuleRuleChain()
+        private List<IBlock> _chain = new List<IBlock>();
+        
+        public RuleChain()
         {
-            Genesis = new Block(null, new HashCode());
+            Genesis = new Block(null, 0);
+            _chain.Add(Genesis);
         }
 
-        public void CommitBlock(IBlock block) => _state.UpdateState(block);
+        public void CommitBlock(IBlock block)
+        {
+            _chain.Add(block);
+            _state.UpdateState(block);
+        }
 
-        public IActionRequirements GetRequirement(RequirementId id) => _state.GetRequirement(id);
-
-        public List<IActionRequirements> GetAllRequirements() => _state.GetAllRequirements();
+        public IActionRequirements GetRequirements(ActionType type) => _state.GetRequirements(type);
+        
+        public IBlock GetLastBlock()
+        {
+            return _chain[_chain.Count - 1];
+        }
     }
 }

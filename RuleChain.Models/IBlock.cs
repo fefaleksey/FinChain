@@ -7,7 +7,7 @@ namespace RuleChain.Models
     {
         DateTime CreationTime { get; }
         List<RuleTransaction> Transactions { get; }
-        HashCode PreviousBlockHash { get; }
-        HashCode Hash { get; }
+        int PreviousBlockHash { get; }
+        int Hash { get; }
     }
 }

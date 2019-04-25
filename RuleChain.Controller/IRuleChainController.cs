@@ -1,9 +1,14 @@
 using FinChain.Models.Actions;
+using RuleChain.Models;
 
 namespace RuleChain.Controller
 {
     public interface IRuleChainController
     {
-        IActionRequirements GetRequirement(RequirementId id);
+        void CommitBlock(IBlock block);
+        
+        IActionRequirements GetRequirements(ActionType type);
+
+        int GetLastBlockHash();
     }
 }
