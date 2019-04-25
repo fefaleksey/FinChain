@@ -8,12 +8,12 @@ using Xunit;
 
 namespace RuleChain.Tests
 {
-    public class AccountTest
+    public class IntegrationTests
     {
         private readonly RuleChain _chain;
         private readonly RuleChainController _controller;
 
-        public AccountTest()
+        public IntegrationTests()
         {
             _chain = new RuleChain();
             _controller = new RuleChainController(_chain);
