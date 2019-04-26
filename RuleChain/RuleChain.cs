@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FinChain.Models.Actions;
 using RuleChain.Models;
 using RuleChain.State;
@@ -11,7 +10,7 @@ namespace RuleChain
         private readonly IState _state = new State.State();
         public RuleBlock Genesis { get; }
 
-        private List<RuleBlock> _chain = new List<RuleBlock>();
+        private readonly List<RuleBlock> _chain = new List<RuleBlock>();
         
         public RuleChain()
         {
