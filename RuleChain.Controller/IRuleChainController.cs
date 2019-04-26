@@ -5,7 +5,7 @@ namespace RuleChain.Controller
 {
     public interface IRuleChainController
     {
-        void CommitBlock(IBlock block);
+        void CommitBlock(RuleBlock block);
         
         IActionRequirements GetRequirements(ActionType type);
 

@@ -5,7 +5,7 @@ namespace RuleChain.State
 {
     public interface IState
     {
-        void UpdateState(IBlock block);
+        void UpdateState(RuleBlock block);
         IActionRequirements GetRequirements(ActionType type);
     }
 }

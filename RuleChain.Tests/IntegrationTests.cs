@@ -25,7 +25,7 @@ namespace RuleChain.Tests
             var transaction = RuleTransaction.CreateAddActionTransaction(ActionType.TransferFromPersonToPerson,
                 new TransferFromPersonToPersonActionRequirements());
             transaction.Status = TransactionStatus.Valid;
-            var block = new Block(new List<RuleTransaction> {transaction}, _controller.GetLastBlockHash());
+            var block = new RuleBlock(new List<RuleTransaction> {transaction}, _controller.GetLastBlockHash());
             
             Assert.Null(_chain.GetRequirements(ActionType.TransferFromPersonToPerson));
             _chain.CommitBlock(block);

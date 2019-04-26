@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace RuleChain.Models
 {
-    public class Block : IBlock
+    public class RuleBlock
     {
         public DateTime CreationTime { get; }
         public List<RuleTransaction> Transactions { get; }
         public int PreviousBlockHash { get; }
         public int Hash { get; private set; }
 
-        public Block(List<RuleTransaction> transactions, int previousBlockHash)
+        public RuleBlock(List<RuleTransaction> transactions, int previousBlockHash)
         {
             Transactions = transactions;
             CreationTime = DateTime.UtcNow;

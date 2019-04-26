@@ -11,14 +11,12 @@ namespace RuleChain.State
         private readonly Dictionary<ActionType, IActionRequirements> _requirements =
             new Dictionary<ActionType, IActionRequirements>();
         
-        public List<IActionRequirements> Rules { get; } = new List<IActionRequirements>();
-        
         public IActionRequirements GetRequirements(ActionType type)
         {
             return _requirements.ContainsKey(type) ? _requirements[type] : null;
         }
 
-        public void UpdateState(IBlock block)
+        public void UpdateState(RuleBlock block)
         {
             foreach (var transaction in block.Transactions)
             {
@@ -85,6 +83,11 @@ namespace RuleChain.State
         private void RemoveRequirements_Handler(RuleTransaction transaction)
         {
             _requirements[transaction.ActionTypeKey].Clear();
+        }
+        
+        private void RemoveActionFromRequirement_Handler(RuleTransaction transaction)
+        {
+            throw new NotImplementedException();
         }
 
         private void AddAction_Handler(RuleTransaction transaction)
