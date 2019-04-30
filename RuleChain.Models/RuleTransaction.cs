@@ -15,7 +15,7 @@ namespace RuleChain.Models
         public int Step { get; }
         public int Position { get; }
 
-        public RuleTransaction()
+        private RuleTransaction()
         {
             
         }
