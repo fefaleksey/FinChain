@@ -4,7 +4,7 @@ using RuleChain.Models;
 
 namespace RuleChain.TransactionsPool
 {
-    internal class RuleTransactionsPool : IRuleTransactionsPool
+    public class RuleTransactionsPool : IRuleTransactionsPool
     {
         private readonly Queue<RuleTransaction> _transactions = new Queue<RuleTransaction>();       
         
@@ -16,6 +16,11 @@ namespace RuleChain.TransactionsPool
         public RuleTransaction Get()
         {
             return _transactions.Dequeue();
+        }
+
+        public List<RuleTransaction> GetAll()
+        {
+            return Get(_transactions.Count);
         }
 
         public List<RuleTransaction> Get(int quantity)

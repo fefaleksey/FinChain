@@ -3,7 +3,7 @@ using RuleChain.Models;
 
 namespace RuleChain.TransactionsPool
 {
-    internal interface IRuleTransactionsPool
+    public interface IRuleTransactionsPool
     {
         void Push(RuleTransaction ruleTransaction);
         
@@ -12,6 +12,12 @@ namespace RuleChain.TransactionsPool
         /// </summary>
         /// <returns>RuleTransaction.</returns>
         RuleTransaction Get();
+        
+        /// <summary>
+        /// Get all ruleTransactions from pool.
+        /// </summary>
+        /// <returns>RuleTransaction List.</returns>
+        List<RuleTransaction> GetAll();
         
         /// <summary>
         /// Get list of transactions from pool.
