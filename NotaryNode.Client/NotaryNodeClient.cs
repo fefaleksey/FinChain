@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using FinChain.Models;
 using Newtonsoft.Json;
@@ -16,32 +18,39 @@ namespace NotaryNode.Client
         }
 
         public void AddTransactionEvent(string nodeUrl, TransactionEvent transactionEvent)
-        {   
+        {
 //            Newtonsoft.Json.JsonConvert.SerializeObject
             _httpClient.PostAsync($"{nodeUrl}/api/transactions/addEvent", null);
         }
 
         public void AddTransactionToPool(string nodeUrl, RuleTransaction ruleTransaction)
         {
+            var json = JsonConvert.SerializeObject(ruleTransaction);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            _httpClient.PostAsync($"{nodeUrl}/api/transactions/addToPool", content);
+        }
+
+        public async void SendBlock(string nodeUrl, RuleBlock block)
+        {
             var settings = new JsonSerializerSettings()
             {
                 TypeNameHandling = TypeNameHandling.All
             };
-            var indented = Formatting.Indented;
-
-            //            var kek = new RuleTransaction();
-//            var jsonKek = JsonConvert.SerializeObject(kek, indented, settings);
-            
-            var json = JsonConvert.SerializeObject(ruleTransaction);
+//            const Formatting indented = Formatting.Indented;
+            var json = JsonConvert.SerializeObject(block, settings);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            _httpClient.PostAsync($"{nodeUrl}/api/transactions/addToPool", content);
 
-//            var lol = JsonConvert.DeserializeObject<RuleTransaction>(jsonKek, settings);
-
-            
-            //            var lol = JsonConvert.DeserializeObject<IRuleTransaction>(test);
-
-//            throw new NotImplementedException();
+            // plug for debugging
+            try
+            {
+                await _httpClient.PostAsync($"{nodeUrl}/api/transactions/addBlock", content);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("===========================================================================");
+                Console.WriteLine(e);
+                Console.WriteLine("===========================================================================");
+            }
         }
     }
 }

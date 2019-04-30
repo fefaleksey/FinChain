@@ -1,5 +1,7 @@
 ﻿using FinChain.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RuleChain.Models;
 
 namespace NotaryNode.Controllers
@@ -8,18 +10,21 @@ namespace NotaryNode.Controllers
     [ApiController]
     public class TransactionsController : ControllerBase
     {
-        [HttpPost]//, Route("addEvent")] //api/transactions/addEvent
+        [HttpPost, Route("addEvent")] //api/transactions/addEvent
         public void AddTransactionEvent([FromBody] TransactionEvent transactionEvent)
         {
             int a;
+//            Response.SendFileAsync(200);
         }
-
-        [HttpPost, Route("addToPool")]
-        public void AddTransactionToPool([FromBody] RuleTransaction ruleTransaction)
+        
+        [HttpPost, Route("addBlock")]
+        public void AddBlock([FromBody] JObject jsonBlock) //dynamic
         {
-            int a;
+            var block = jsonBlock.ToObject<RuleBlock>(new JsonSerializer()
+            {
+                TypeNameHandling = TypeNameHandling.All
+            });
             
-//            var obj =  JsonConvert.DeserializeObject<RuleTransaction>(JsonString, settings);
         }
     }
 }
