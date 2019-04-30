@@ -15,6 +15,11 @@ namespace RuleChain.Models
         public int Step { get; }
         public int Position { get; }
 
+        public RuleTransaction()
+        {
+            
+        }
+        
         private RuleTransaction(TransactionType type, ActionType actionTypeKey, ActionType actionTypeValue
             , IActionRequirements requirements, int step, int position)
         {
