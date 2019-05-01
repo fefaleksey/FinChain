@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
 using RuleChain.Controller;
@@ -8,6 +9,7 @@ namespace Actions
     {
         public ActionId Id { get; } = new ActionId();
         public bool IsActive { get; private set; }
+        public List<AccountType> AccessToDeploy { get; }
 
         private const ActionType Type = ActionType.TransferFromPersonToPerson;
         private IActionRequirements ActionRequirements { get; }
@@ -18,6 +20,10 @@ namespace Actions
         {
             _controller = controller;
             ActionRequirements = new ActionRequirements();
+            AccessToDeploy = new List<AccountType>()
+            {
+                AccountType.Person
+            };
         }
         
         public ActionExecutionResult Execute(Account sender, params object[] list)
@@ -36,7 +42,7 @@ namespace Actions
             }
 
             var result = TransferFromPersonToPerson(sender, receiver, amount);
-            ExecuteRequirements(sender);
+            ExecuteRequirements(sender, list);
             IsActive = false;
             return result;
         }
@@ -60,7 +66,7 @@ namespace Actions
             return ActionExecutionResult.Success;
         }
 
-        private void ExecuteRequirements(Account sender)
+        private void ExecuteRequirements(Account sender, params object[] list)
         {
             var requirements = _controller.GetRequirements(Type);
             var actionTypes = requirements.PeekActions();
@@ -68,7 +74,7 @@ namespace Actions
             foreach (var actionType in actionTypes)
             {
                 var action = builder.Create(actionType);
-                action.Execute(sender);
+                action.Execute(sender, list);
             }
         }
     }

@@ -10,6 +10,7 @@ namespace Actions
     {
         public ActionId Id { get; }
         public bool IsActive { get; private set; }
+        public List<AccountType> AccessToDeploy { get; }
 
         public List<AccountType> ExecuteOrder { get; }
         private const ActionType Type = ActionType.TakeCredit;
@@ -18,6 +19,10 @@ namespace Actions
         public TakeCreditAction(IRuleChainController controller)
         {
             _controller = controller;
+            AccessToDeploy = new List<AccountType>()
+            {
+                AccountType.Organization
+            };
             throw new NotImplementedException();
             // TODO: Configure execute order
             ExecuteOrder = new List<AccountType> {AccountType.Person};

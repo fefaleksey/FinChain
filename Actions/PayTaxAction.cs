@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
 
@@ -7,6 +9,7 @@ namespace Actions
     {
         public ActionId Id { get; } = new ActionId();
         public bool IsActive { get; } = false;
+        public List<AccountType> AccessToDeploy { get; } = new List<AccountType>();
         public byte Percent { get; private set; }
         private IActionRequirements ActionRequirements { get; } = new ActionRequirements();
 
@@ -21,8 +24,20 @@ namespace Actions
                     var newPercent = (byte) list[0];
                     return ChangePercent(newPercent);
                 }
+                case AccountType.Person when list.Length == 0:
+                    return ActionExecutionResult.Failed;
                 case AccountType.Person:
-                    return PayTax(sender);
+                {
+                    try
+                    {
+                        var amount = (int) list[1];
+                        return PayTax(sender, amount);
+                    }
+                    catch (Exception)
+                    {
+                        return ActionExecutionResult.Failed;
+                    }
+                }
                 default:
                     return ActionExecutionResult.Failed;
             }
@@ -44,10 +59,9 @@ namespace Actions
             return ActionExecutionResult.Success;
         }
 
-        private ActionExecutionResult PayTax(Account account)
+        private ActionExecutionResult PayTax(Account account, int amount)
         {
-            var balance = account.Balance;
-            account.Balance -= (int) (balance * (double) Percent / 100);
+            account.Balance -= (int) (amount * (double) Percent / 100);
             return ActionExecutionResult.Success;
         }
     }
