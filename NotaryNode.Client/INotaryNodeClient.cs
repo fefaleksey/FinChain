@@ -1,4 +1,5 @@
 using FinChain.Models;
+using FinChain.Models.Actions;
 using RuleChain.Models;
 
 namespace NotaryNode.Client
@@ -8,5 +9,6 @@ namespace NotaryNode.Client
         void AddTransactionEvent(string nodeUrl, TransactionEvent transactionEvent);
         void AddTransactionToPool(string nodeUrl, RuleTransaction ruleTransaction);
         void SendBlock(string nodeUrl, RuleBlock block);
+        IAction GetRequirement(ActionType type);
     }
 }

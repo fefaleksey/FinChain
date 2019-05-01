@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
+using NotaryNode.Client;
 using RuleChain.Controller;
 
 namespace Actions
@@ -14,12 +15,14 @@ namespace Actions
         private const ActionType Type = ActionType.TransferFromPersonToPerson;
         private IActionRequirements ActionRequirements { get; }
         private readonly IRuleChainController _controller;
+        private readonly INotaryNodeClient _client;
 
 
-        public TransferFromPersonToPersonAction(IRuleChainController controller)
+        public TransferFromPersonToPersonAction(IRuleChainController controller, INotaryNodeClient client)
         {
             _controller = controller;
             ActionRequirements = new ActionRequirements();
+            _client = client;
             AccessToDeploy = new List<AccountType>()
             {
                 AccountType.Person
@@ -70,10 +73,9 @@ namespace Actions
         {
             var requirements = _controller.GetRequirements(Type);
             var actionTypes = requirements.PeekActions();
-            var builder = new ActionBuilder(_controller);
             foreach (var actionType in actionTypes)
             {
-                var action = builder.Create(actionType);
+                var action = _client.GetRequirement(actionType);
                 action.Execute(sender, list);
             }
         }

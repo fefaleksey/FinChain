@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
+using NotaryNode.Client;
 using RuleChain.Controller;
 
 namespace Actions
@@ -15,10 +16,12 @@ namespace Actions
         public List<AccountType> ExecuteOrder { get; }
         private const ActionType Type = ActionType.TakeCredit;
         private readonly IRuleChainController _controller;
+        private readonly INotaryNodeClient _client;
 
-        public TakeCreditAction(IRuleChainController controller)
+        public TakeCreditAction(IRuleChainController controller, INotaryNodeClient client)
         {
             _controller = controller;
+            _client = client;
             AccessToDeploy = new List<AccountType>()
             {
                 AccountType.Organization
@@ -52,10 +55,9 @@ namespace Actions
         {
             var requirements = _controller.GetRequirements(Type);
             var actionTypes = requirements.PeekActions();
-            var builder = new ActionBuilder(_controller);
             foreach (var actionType in actionTypes)
             {
-                var action = builder.Create(actionType);
+                var action = _client.GetRequirement(actionType);
                 action.Execute(sender);
             }
         }

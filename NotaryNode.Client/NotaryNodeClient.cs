@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using FinChain.Models;
+using FinChain.Models.Actions;
 using Newtonsoft.Json;
 using RuleChain.Models;
 
@@ -51,6 +52,11 @@ namespace NotaryNode.Client
                 Console.WriteLine(e);
                 Console.WriteLine("===========================================================================");
             }
+        }
+
+        public IAction GetRequirement(ActionType type)
+        {
+            throw new NotImplementedException();
         }
     }
 }
