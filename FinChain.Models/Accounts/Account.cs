@@ -4,7 +4,7 @@
     {
         public Address AccountAddress { get; }
         public AccountType Type { get; }
-        public uint Balance { get; set; }
+        public int Balance { get; set; }
 
         public Account(AccountType type)
         {
