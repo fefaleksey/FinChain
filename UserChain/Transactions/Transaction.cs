@@ -1,30 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using FinChain.Models.Accounts;
+using FinChain.Models.Actions;
 
 namespace UserChain.Transactions
 {
-    public class Transaction : ITransaction
+    public class Transaction
     {
-        public Transaction(Account sender, Account receiver)
-        {
-            Sender = sender;
-            Receiver = receiver;
-            Time = DateTime.UtcNow;
-            Status = TransactionStatus.Created;
-
-            GovernBy = new List<AccountType> {sender.Type, receiver.Type};
-        }
-
         public DateTime Time { get; }
         public TransactionStatus Status { get; }
-        public List<AccountType> GovernBy { get; }
         public Account Sender { get; }
-        public Account Receiver { get; }
-
-        public TransactionType Type()
+        public object[] Params { get; }
+        
+        public ActionId ContractToCall { get; }
+        
+        public Transaction(Account sender, ActionId contractToCall, params object[] @params)
         {
-            throw new NotImplementedException();
-        }
+            Sender = sender;
+            ContractToCall = contractToCall;
+            Params = @params;
+            Time = DateTime.UtcNow;
+            Status = TransactionStatus.Created;
+        }        
     }
 }

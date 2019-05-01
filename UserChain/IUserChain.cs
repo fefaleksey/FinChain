@@ -4,9 +4,4 @@
     {
         void AddTransactionToPool();
     }
-
-    public interface ITransaction
-    {
-        
-    }
 }
