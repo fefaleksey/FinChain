@@ -8,12 +8,14 @@ namespace RuleChain.State
 {
     public class State : IState
     {
-        private readonly Dictionary<ActionType, IActionRequirements> _requirements =
-            new Dictionary<ActionType, IActionRequirements>();
-        
+        private readonly List<ActionType> _actions = new List<ActionType>();
+
+        private readonly Dictionary<ActionType, IAction> _requirements =
+            new Dictionary<ActionType, IAction>();
+
         public IActionRequirements GetRequirements(ActionType type)
         {
-            return _requirements.ContainsKey(type) ? _requirements[type] : null;
+            return _requirements.ContainsKey(type) ? _requirements[type].GetRequirements() : null;
         }
 
         public void UpdateState(RuleBlock block)
@@ -30,26 +32,17 @@ namespace RuleChain.State
             {
                 return;
             }
+
             switch (transaction.Type)
             {
-                case TransactionType.AddRequirements:
+                case TransactionType.AddRequirement:
                 {
-                    AddRequirements_Handler(transaction);
+                    AddActionToRequirements_Handler(transaction);
                     break;
                 }
-                case TransactionType.RemoveRequirements:
+                case TransactionType.RemoveRequirement:
                 {
-                    RemoveRequirements_Handler(transaction);
-                    break;
-                }
-                case TransactionType.AddActionToRequirement:
-                {
-                    AddActionToRequirement_Handler(transaction);
-                    break;
-                }
-                case TransactionType.RemoveActionFromRequirement:
-                {
-                    throw new NotImplementedException();
+                    RemoveActionFromRequirements_Handler(transaction);
                     break;
                 }
                 case TransactionType.AddAction:
@@ -69,35 +62,24 @@ namespace RuleChain.State
             }
         }
 
-        private void AddRequirements_Handler(RuleTransaction transaction)
+        private void AddActionToRequirements_Handler(RuleTransaction transaction)
         {
-            _requirements.Add(transaction.ActionTypeKey, transaction.Requirements);
-        }
-        
-        private void AddActionToRequirement_Handler(RuleTransaction transaction)
-        {
-            var requirementToChange = _requirements[transaction.ActionTypeKey];
-            requirementToChange.AddAction(transaction.ActionTypeValue, transaction.Step);
+            _requirements[transaction.Action].AddRequirement(transaction.Requirement, transaction.Step);
         }
 
-        private void RemoveRequirements_Handler(RuleTransaction transaction)
+        private void RemoveActionFromRequirements_Handler(RuleTransaction transaction)
         {
-            _requirements[transaction.ActionTypeKey].Clear();
-        }
-        
-        private void RemoveActionFromRequirement_Handler(RuleTransaction transaction)
-        {
-            throw new NotImplementedException();
+            _requirements[transaction.Action].RemoveRequirement(transaction.Step, transaction.Position);
         }
 
         private void AddAction_Handler(RuleTransaction transaction)
         {
-            _requirements.Add(transaction.ActionTypeKey, transaction.Requirements);
+            _actions.Add(transaction.Action);
         }
 
         private void RemoveAction_Handler(RuleTransaction transaction)
         {
-            _requirements.Remove(transaction.ActionTypeKey);
+            _actions.Remove(transaction.Action);
         }
     }
 }

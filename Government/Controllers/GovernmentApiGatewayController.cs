@@ -8,6 +8,8 @@ using NotaryNode.Client;
 using RuleChain.Models;
 using RuleChain.TransactionsPool;
 using System.Web;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Government.Controllers
 {
@@ -26,12 +28,25 @@ namespace Government.Controllers
             _notaryNodeClient = notaryNodeClient;
             _transactionsPool = transactionsPool;
         }
-        
+
         [HttpPost, Route("addAction")]
-        public void CreateAddAction([FromBody] ActionType type)
+        public void AddAction([FromBody] ActionType type)
         {
             var requirements = ActionRequirementBuilder.Create(type);
             var ruleTransaction = RuleTransaction.CreateAddActionTransaction(type, requirements);
+            _transactionsPool.Push(ruleTransaction);
+        }
+
+        [HttpPost, Route("addRequirement")]
+        public void AddRequirement([FromBody] ActionType typeKey, ActionType typeValue, JObject jsonRequirement,
+            int step)
+        {
+            var requirement = jsonRequirement.ToObject<IActionRequirements>(new JsonSerializer()
+            {
+                TypeNameHandling = TypeNameHandling.All
+            });
+            var ruleTransaction =
+                RuleTransaction.CreateAddRequirementsTransaction(typeKey, typeValue, requirement, step);
             _transactionsPool.Push(ruleTransaction);
         }
     }
