@@ -1,6 +1,6 @@
 ﻿namespace UserChain.Transactions
 {
-    internal interface ITransactionsPool
+    internal interface IUserChainTransactionsPool
     {
         
     }

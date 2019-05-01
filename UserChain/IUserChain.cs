@@ -2,6 +2,8 @@
 {
     public interface IUserChain
     {
-        void AddTransactionToPool();
+        Block Genesis { get; }
+        void CommitBlock(Block block);
+        Block GetLastBlock();
     }
 }
