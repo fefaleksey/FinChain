@@ -23,7 +23,7 @@ namespace RuleChain.Tests
         public void CommitBlockTest()
         {
             var transaction = RuleTransaction.CreateAddActionTransaction(ActionType.TransferFromPersonToPerson,
-                new TransferFromPersonToPersonActionRequirements());
+                new ActionRequirements());
             transaction.Status = TransactionStatus.Valid;
             var block = new RuleBlock(new List<RuleTransaction> {transaction}, _controller.GetLastBlockHash());
             
