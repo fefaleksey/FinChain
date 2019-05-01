@@ -2,17 +2,17 @@
 
 namespace FinChain.Models.Accounts
 {
-    public sealed class Address : IEquatable<Address>
+    public sealed class AccountAddress : IEquatable<AccountAddress>
     {
         private readonly Guid _address;
         public override string ToString() => _address.ToString();
 
-        public Address()
+        public AccountAddress()
         {
             _address = Guid.NewGuid();
         }
 
-        public bool Equals(Address other) => _address.Equals(other._address);
+        public bool Equals(AccountAddress other) => _address.Equals(other._address);
 
         public override int GetHashCode()
         {

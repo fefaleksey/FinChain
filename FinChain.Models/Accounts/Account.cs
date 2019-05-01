@@ -2,13 +2,13 @@
 {
     public class Account
     {
-        public Address AccountAddress { get; }
+        public AccountAddress AccountAddress { get; }
         public AccountType Type { get; }
         public int Balance { get; set; }
 
         public Account(AccountType type)
         {
-            AccountAddress = new Address();
+            AccountAddress = new AccountAddress();
             Type = type;
             Balance = 0;
         }
