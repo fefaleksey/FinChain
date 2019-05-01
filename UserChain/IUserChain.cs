@@ -1,4 +1,6 @@
-﻿namespace UserChain
+﻿using UserChain.Transactions;
+
+namespace UserChain
 {
     public interface IUserChain
     {

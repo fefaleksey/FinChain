@@ -1,4 +1,4 @@
-﻿namespace UserChain.Transactions
+﻿namespace UserChain.Transactions.enums
 {
     public enum TransactionType
     {

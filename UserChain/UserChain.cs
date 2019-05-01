@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UserChain.Transactions;
 
 namespace UserChain
 {

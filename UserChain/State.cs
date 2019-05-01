@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
 using UserChain.Transactions;
+using UserChain.Transactions.enums;
 
 namespace UserChain
 {

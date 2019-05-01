@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UserChain.Transactions;
 
-namespace UserChain
+namespace UserChain.Transactions
 {
     public class Block
     {

@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotaryNode.Client", "Notary
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Government", "Government\Government.csproj", "{D73CD4BD-14F8-49DA-9272-A11B1FF7DA13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinChain.Utils", "FinChain.Utils\FinChain.Utils.csproj", "{2B1D0857-A874-4989-92EE-3E9A4F962E1E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleChain", "RuleChain\RuleChain.csproj", "{CB3ABA47-3036-4DDA-83A0-7E4125E063DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserChain", "UserChain\UserChain.csproj", "{C6C8F303-9CAF-40B6-B7F6-118B83F9C92D}"
@@ -48,10 +46,6 @@ Global
 		{D73CD4BD-14F8-49DA-9272-A11B1FF7DA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D73CD4BD-14F8-49DA-9272-A11B1FF7DA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D73CD4BD-14F8-49DA-9272-A11B1FF7DA13}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B1D0857-A874-4989-92EE-3E9A4F962E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B1D0857-A874-4989-92EE-3E9A4F962E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B1D0857-A874-4989-92EE-3E9A4F962E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B1D0857-A874-4989-92EE-3E9A4F962E1E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CB3ABA47-3036-4DDA-83A0-7E4125E063DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CB3ABA47-3036-4DDA-83A0-7E4125E063DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB3ABA47-3036-4DDA-83A0-7E4125E063DE}.Release|Any CPU.ActiveCfg = Release|Any CPU

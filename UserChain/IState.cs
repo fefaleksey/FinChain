@@ -1,3 +1,5 @@
+using UserChain.Transactions;
+
 namespace UserChain
 {
     interface IState
