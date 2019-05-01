@@ -28,6 +28,21 @@ namespace Actions
             throw new NotImplementedException();
         }
 
+        public void AddRequirement(ActionType requirement, int step)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveRequirement(int step, int position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionRequirements GetRequirements()
+        {
+            throw new NotImplementedException();
+        }
+
         private void ExecuteRequirements(Account sender)
         {
             var requirements = _controller.GetRequirements(Type);

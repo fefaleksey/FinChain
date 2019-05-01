@@ -26,7 +26,7 @@ namespace Actions
 
         private static IActionRequirements CreateTransferFromPersonToPersonActionRequirements()
         {
-            return new TransferFromPersonToPersonActionRequirements();
+            return new ActionRequirements();
         }
 
         private static IActionRequirements CreatePayTaxActionRequirements()

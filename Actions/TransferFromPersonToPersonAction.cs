@@ -1,19 +1,15 @@
-using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
 using RuleChain.Controller;
 
-
 namespace Actions
 {
-
     public class TransferFromPersonToPersonAction : IAction
     {
         public ActionId Id { get; } = new ActionId();
         public bool IsActive { get; private set; }
-        public List<AccountType> ExecuteOrder { get; }
 
-        private const ActionType _type = ActionType.TransferFromPersonToPerson;
+        private const ActionType Type = ActionType.TransferFromPersonToPerson;
         private IActionRequirements ActionRequirements { get; }
         private readonly IRuleChainController _controller;
 
@@ -21,34 +17,38 @@ namespace Actions
         public TransferFromPersonToPersonAction(IRuleChainController controller)
         {
             _controller = controller;
-            ExecuteOrder = new List<AccountType> {AccountType.Person};
-            ActionRequirements = new TransferFromPersonToPersonActionRequirements();
+            ActionRequirements = new ActionRequirements();
         }
         
         public ActionExecutionResult Execute(Account sender, params object[] list)
         {   
             var receiver = (Account) list[0];
-            var amount = (uint) list[1];
+            var amount = (int) list[1];
 
             if (sender.Type != AccountType.Person || receiver.Type != AccountType.Person)
             {
-//                throw new ArgumentException("Incorrect params. Expected sender, receiver, amount.");
                 return ActionExecutionResult.Failed;
             }
 
-            if (!IsActive)
+            if (!IsActive || amount <= 0)
             {
-//                throw new Exception("Action is not active.");
                 return ActionExecutionResult.Failed;
             }
 
-            TransferFromPersonToPerson(sender, receiver, amount);
+            var result = TransferFromPersonToPerson(sender, receiver, amount);
             ExecuteRequirements(sender);
             IsActive = false;
-            return ActionExecutionResult.Success;
+            return result;
         }
+
+        public void AddRequirement(ActionType requirement, int step) => ActionRequirements.AddAction(requirement, step);
+
+        public void RemoveRequirement(int step, int position) => ActionRequirements.RemoveAction(step, position);
+
+        public IActionRequirements GetRequirements() => ActionRequirements;
         
-        private ActionExecutionResult TransferFromPersonToPerson(Account sender, Account receiver, uint amount)
+
+        private ActionExecutionResult TransferFromPersonToPerson(Account sender, Account receiver, int amount)
         {
             if (sender.Balance < amount)
             {
@@ -62,7 +62,7 @@ namespace Actions
 
         private void ExecuteRequirements(Account sender)
         {
-            var requirements = _controller.GetRequirements(_type);
+            var requirements = _controller.GetRequirements(Type);
             var actionTypes = requirements.PeekActions();
             var builder = new ActionBuilder(_controller);
             foreach (var actionType in actionTypes)

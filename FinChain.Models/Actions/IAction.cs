@@ -9,5 +9,9 @@ namespace FinChain.Models.Actions
         bool IsActive { get; }
 
         ActionExecutionResult Execute(Account sender, params object[] list);
+        
+        void AddRequirement(ActionType requirement, int step);
+        void RemoveRequirement(int step, int position);
+        IActionRequirements GetRequirements();
     }
 }

@@ -3,11 +3,11 @@ using FinChain.Models.Actions;
 
 namespace Actions
 {
-    public class TransferFromPersonToPersonActionRequirements : IActionRequirements
+    public class ActionRequirements : IActionRequirements
     {
         private List<List<ActionType>> Requirements { get; set; }
 
-        public TransferFromPersonToPersonActionRequirements()
+        public ActionRequirements()
         {
             Requirements = new List<List<ActionType>>();
         }
