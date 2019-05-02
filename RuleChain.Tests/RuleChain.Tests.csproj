@@ -15,7 +15,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Actions\Actions.csproj" />
       <ProjectReference Include="..\RuleChain.Controller\RuleChain.Controller.csproj" />
-      <ProjectReference Include="..\RuleChain.Models\RuleChain.Models.csproj" />
       <ProjectReference Include="..\RuleChain\RuleChain.csproj" />
     </ItemGroup>
 

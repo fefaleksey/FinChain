@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RuleChain.Models\RuleChain.Models.csproj" />
+      <ProjectReference Include="..\RuleChain\RuleChain.csproj" />
     </ItemGroup>
 
 </Project>
