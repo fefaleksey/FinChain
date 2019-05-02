@@ -1,4 +1,4 @@
-using UserChain.Transactions;
+using UserChain.Models;
 
 namespace UserChain
 {

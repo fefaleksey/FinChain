@@ -1,9 +1,9 @@
 ﻿using System;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
-using UserChain.Transactions.enums;
+using UserChain.Models.enums;
 
-namespace UserChain.Transactions
+namespace UserChain.Models
 {
     public class UserChainTransaction
     {

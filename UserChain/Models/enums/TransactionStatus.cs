@@ -1,4 +1,4 @@
-﻿namespace UserChain.Transactions.enums
+﻿namespace UserChain.Models.enums
 {
     public enum TransactionStatus
     {

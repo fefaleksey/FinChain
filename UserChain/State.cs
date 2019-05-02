@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
-using UserChain.Transactions;
-using UserChain.Transactions.enums;
+using UserChain.Models;
+using UserChain.Models.enums;
 
 namespace UserChain
 {

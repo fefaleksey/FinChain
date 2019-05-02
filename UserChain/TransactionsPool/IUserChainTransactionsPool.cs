@@ -1,4 +1,4 @@
-﻿namespace UserChain.Transactions
+﻿namespace UserChain.TransactionsPool
 {
     internal interface IUserChainTransactionsPool
     {

@@ -16,8 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actions", "Actions\Actions.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleChain.Controller", "RuleChain.Controller\RuleChain.Controller.csproj", "{5560D4B2-A9B5-4E21-93B7-71E5DB0069D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleChain.TransactionsPool", "RuleChain.TransactionsPool\RuleChain.TransactionsPool.csproj", "{A6876FF9-F07C-4B11-910D-0AF1F7D23768}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleChain.Tests", "RuleChain.Tests\RuleChain.Tests.csproj", "{33447CFE-55F7-424D-9600-184012C515D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserChain.Controller", "UserChain.Controller\UserChain.Controller.csproj", "{D26A5B5E-CF52-409F-871D-72725B7D8F3A}"
@@ -60,10 +58,6 @@ Global
 		{5560D4B2-A9B5-4E21-93B7-71E5DB0069D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5560D4B2-A9B5-4E21-93B7-71E5DB0069D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5560D4B2-A9B5-4E21-93B7-71E5DB0069D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6876FF9-F07C-4B11-910D-0AF1F7D23768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6876FF9-F07C-4B11-910D-0AF1F7D23768}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6876FF9-F07C-4B11-910D-0AF1F7D23768}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6876FF9-F07C-4B11-910D-0AF1F7D23768}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33447CFE-55F7-424D-9600-184012C515D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33447CFE-55F7-424D-9600-184012C515D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33447CFE-55F7-424D-9600-184012C515D5}.Release|Any CPU.ActiveCfg = Release|Any CPU

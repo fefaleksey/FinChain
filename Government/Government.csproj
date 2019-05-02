@@ -25,7 +25,6 @@
       <ProjectReference Include="..\Actions\Actions.csproj" />
       <ProjectReference Include="..\FinChain.Models\FinChain.Models.csproj" />
       <ProjectReference Include="..\NotaryNode.Client\NotaryNode.Client.csproj" />
-      <ProjectReference Include="..\RuleChain.TransactionsPool\RuleChain.TransactionsPool.csproj" />
     </ItemGroup>
 
 </Project>
