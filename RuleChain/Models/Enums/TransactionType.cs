@@ -2,9 +2,9 @@
 {
     public enum TransactionType
     {
-        AddRequirement,
-        RemoveRequirement,
         AddAction,
-        RemoveAction
+        RemoveAction,
+        AddRequirement,
+        RemoveRequirement
     }
 }

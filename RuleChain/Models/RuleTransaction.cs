@@ -10,8 +10,9 @@ namespace RuleChain.Models
         public TransactionStatus Status { get; set; }
         public TransactionType Type { get; }
         public ActionType Action { get; }
-        public ActionType Requirement { get; }
-        public IActionRequirements Requirements { get; }
+
+        public IAction Requirement { get; }
+//        public IActionRequirements Requirements { get; }
 
 //        public object[] Params { get; }
         public int Step { get; }
@@ -19,46 +20,44 @@ namespace RuleChain.Models
 
         private RuleTransaction()
         {
-            
+
         }
-        
-        private RuleTransaction(TransactionType type, ActionType action, ActionType requirement
-            , IActionRequirements requirements, int step, int position)
+
+        private RuleTransaction(TransactionType type, ActionType action, IAction requirement, int step, int position)
         {
             Type = type;
             Action = action;
             Requirement = requirement;
-            Requirements = requirements;
+//            Requirements = requirements;
             Step = step;
             Position = position;
             Status = TransactionStatus.Created;
             Time = DateTime.UtcNow;
         }
-//        TODO: Add following:
-//        RemoveRequirements,
-//        AddActionToRequirement,
-//        RemoveActionFromRequirement,
 
-        public static RuleTransaction CreateAddActionTransaction(ActionType actionTypeKey,
-            IActionRequirements requirements)
+        public static RuleTransaction CreateAddActionTransaction(ActionType action)
         {
-            var transaction = new RuleTransaction(TransactionType.AddAction, actionTypeKey, ActionType.Null
-                , requirements, 0, 0);
+            var transaction = new RuleTransaction(TransactionType.AddAction, action, null
+                , 0, 0);
             return transaction;
         }
 
-        public static RuleTransaction CreateRemoveActionTransaction(ActionType actionTypeKey)
+        public static RuleTransaction CreateRemoveActionTransaction(ActionType action)
         {
-            var transaction = new RuleTransaction(TransactionType.RemoveAction, actionTypeKey, ActionType.Null
-                , null, 0, 0);
+            var transaction = new RuleTransaction(TransactionType.RemoveAction, action, null, 0, 0);
             return transaction;
         }
 
-        public static RuleTransaction CreateAddRequirementsTransaction(ActionType actionTypeKey,
-            ActionType actionTypeValue, IActionRequirements requirements, int step)
+        public static RuleTransaction CreateAddRequirementsTransaction(ActionType action,
+            IAction requirement, int step)
         {
-            var transaction = new RuleTransaction(TransactionType.AddRequirement, actionTypeKey,
-                actionTypeValue, requirements, step, 0);
+            var transaction = new RuleTransaction(TransactionType.AddRequirement, action, requirement, step, 0);
+            return transaction;
+        }
+
+        public static RuleTransaction CreateRemoveRequirementsTransaction(ActionType action, int step, int position)
+        {
+            var transaction = new RuleTransaction(TransactionType.RemoveAction, action, null, step, position);
             return transaction;
         }
     }

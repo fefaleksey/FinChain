@@ -22,14 +22,16 @@ namespace RuleChain.Tests
         [Fact]
         public void CommitBlockTest()
         {
-            var transaction = RuleTransaction.CreateAddActionTransaction(ActionType.TransferFromPersonToPerson,
-                new ActionRequirements());
+            var transaction = RuleTransaction.CreateAddActionTransaction(ActionType.TransferFromPersonToPerson);
             transaction.Status = TransactionStatus.Valid;
             var block = new RuleBlock(new List<RuleTransaction> {transaction}, _controller.GetLastBlockHash());
-            
-            Assert.Null(_chain.GetRequirements(ActionType.TransferFromPersonToPerson));
+            var requirements = _chain.GetRequirements(ActionType.TransferFromPersonToPerson);
+            Assert.Null(requirements);
+//            Assert.Null(_chain.GetRequirements(ActionType.TransferFromPersonToPerson));
             _chain.CommitBlock(block);
-            Assert.NotNull(_chain.GetRequirements(ActionType.TransferFromPersonToPerson));
+            requirements = _chain.GetRequirements(ActionType.TransferFromPersonToPerson);
+//            Assert.NotNull(_chain.GetRequirements(ActionType.TransferFromPersonToPerson));
+            Assert.NotEmpty(requirements.GetAllRequirements());
         }
     }
 }

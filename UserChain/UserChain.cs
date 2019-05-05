@@ -21,7 +21,6 @@ namespace UserChain
             _chain.Add(block);
             _state.UpdateState(block);
         }
-
         
         public Block GetLastBlock()
         {

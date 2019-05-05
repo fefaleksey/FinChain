@@ -53,7 +53,7 @@ namespace NotaryNode.Client
             }
         }
 
-        public IAction GetRequirement(ActionType type)
+        public IActionRequirements GetRequirements(ActionType type)
         {
             throw new NotImplementedException();
         }
