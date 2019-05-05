@@ -6,9 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using NotaryNode.Client;
-using RuleChain;
 using RuleChain.Controller;
-using RuleChain.TransactionsPool;
+using RuleChain.Models;
+using TransactionPool;
 
 
 namespace Government
@@ -19,7 +19,7 @@ namespace Government
 
         private readonly HttpClient _client = new HttpClient();
         private readonly NotaryNodeClient _notaryNodeClient;
-        private readonly RuleTransactionsPool _transactionsPool;
+        private readonly ITransactionsPool<RuleTransaction> _transactionsPool;
         private readonly TimerModule _timer;
         private readonly global::RuleChain.RuleChain _chain;
         private readonly IRuleChainController _controller;
@@ -27,7 +27,7 @@ namespace Government
         {
             Configuration = configuration;
             _notaryNodeClient = new NotaryNodeClient(_client);
-            _transactionsPool = new RuleTransactionsPool();
+            _transactionsPool = new TransactionsPool<RuleTransaction>();
             _chain = new global::RuleChain.RuleChain();
             _controller = new RuleChainController(_chain);
             _timer = new TimerModule(_transactionsPool, _notaryNodeClient, Configuration, _controller);
@@ -39,7 +39,7 @@ namespace Government
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<INotaryNodeClient>(_notaryNodeClient)
-                .AddSingleton<IRuleTransactionsPool>(_transactionsPool)
+                .AddSingleton<ITransactionsPool<RuleTransaction>>(_transactionsPool)
                 .AddSingleton<TimerModule>(_timer)
                 .AddSingleton<IRuleChainController>(_controller)
                 .AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Version = "2.0"}); });

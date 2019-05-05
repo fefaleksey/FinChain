@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleChain.Tests", "RuleChai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserChain.Controller", "UserChain.Controller\UserChain.Controller.csproj", "{D26A5B5E-CF52-409F-871D-72725B7D8F3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionPool", "TransactionPool\TransactionPool.csproj", "{F58620A5-8CBC-4AB8-A5BD-4D7C4EF84F03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +68,9 @@ Global
 		{D26A5B5E-CF52-409F-871D-72725B7D8F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D26A5B5E-CF52-409F-871D-72725B7D8F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D26A5B5E-CF52-409F-871D-72725B7D8F3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F58620A5-8CBC-4AB8-A5BD-4D7C4EF84F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F58620A5-8CBC-4AB8-A5BD-4D7C4EF84F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F58620A5-8CBC-4AB8-A5BD-4D7C4EF84F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F58620A5-8CBC-4AB8-A5BD-4D7C4EF84F03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

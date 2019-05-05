@@ -1,10 +1,9 @@
-using System;
 using System.Threading;
 using Microsoft.Extensions.Configuration;
 using NotaryNode.Client;
 using RuleChain.Controller;
 using RuleChain.Models;
-using RuleChain.TransactionsPool;
+using TransactionPool;
 
 namespace Government
 {
@@ -13,12 +12,12 @@ namespace Government
         private static Timer _timer;
         private const long Interval = 10000; //10 sec
         private static readonly object SyncLock = new object();
-        private readonly IRuleTransactionsPool _transactionsPool;
+        private readonly ITransactionsPool<RuleTransaction> _transactionsPool;
         private readonly INotaryNodeClient _notaryNodeClient;
         private readonly IConfiguration _configuration;
         private readonly IRuleChainController _controller;
 
-        public TimerModule(IRuleTransactionsPool transactionsPool, INotaryNodeClient notaryNodeClient, 
+        public TimerModule(ITransactionsPool<RuleTransaction> transactionsPool, INotaryNodeClient notaryNodeClient, 
             IConfiguration configuration, IRuleChainController controller)
         {
             _transactionsPool = transactionsPool;

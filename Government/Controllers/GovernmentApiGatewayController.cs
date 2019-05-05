@@ -1,15 +1,12 @@
-﻿using System.Net.Mail;
-using Actions;
-using FinChain.Models;
+﻿using Actions;
 using FinChain.Models.Actions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using NotaryNode.Client;
 using RuleChain.Models;
-using RuleChain.TransactionsPool;
-using System.Web;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using TransactionPool;
 
 namespace Government.Controllers
 {
@@ -17,12 +14,12 @@ namespace Government.Controllers
     [ApiController]
     public class GovernmentApiGatewayController : ControllerBase
     {
-        private readonly IRuleTransactionsPool _transactionsPool;
+        private readonly ITransactionsPool<RuleTransaction> _transactionsPool;
         private readonly IConfiguration _configuration;
         private readonly INotaryNodeClient _notaryNodeClient;
 
         public GovernmentApiGatewayController(IConfiguration configuration, INotaryNodeClient notaryNodeClient,
-            IRuleTransactionsPool transactionsPool)
+            ITransactionsPool<RuleTransaction> transactionsPool)
         {
             _configuration = configuration;
             _notaryNodeClient = notaryNodeClient;
