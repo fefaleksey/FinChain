@@ -1,7 +1,7 @@
 ﻿using System;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
-using UserChain.Models.enums;
+using UserChain.Models.Enums;
 
 namespace UserChain.Models
 {
