@@ -21,7 +21,7 @@ namespace Actions
         public TransferFromPersonToPersonAction(IRuleChainController controller, INotaryNodeClient client)
         {
             _controller = controller;
-            ActionRequirements = new ActionRequirements();
+            ActionRequirements = _client.GetRequirements(Type);
             _client = client;
             AccessToDeploy = new List<AccountType>()
             {
@@ -49,14 +49,7 @@ namespace Actions
             IsActive = false;
             return result;
         }
-
-        public void AddRequirement(ActionType requirement, int step) => ActionRequirements.AddAction(requirement, step);
-
-        public void RemoveRequirement(int step, int position) => ActionRequirements.RemoveAction(step, position);
-
-        public IActionRequirements GetRequirements() => ActionRequirements;
         
-
         private ActionExecutionResult TransferFromPersonToPerson(Account sender, Account receiver, int amount)
         {
             if (sender.Balance < amount)
@@ -71,12 +64,10 @@ namespace Actions
 
         private void ExecuteRequirements(Account sender, params object[] list)
         {
-            var requirements = _controller.GetRequirements(Type);
-            var actionTypes = requirements.PeekActions();
-            foreach (var actionType in actionTypes)
+            var requirements = ActionRequirements.DequeueActions();
+            foreach (var requirement in requirements)
             {
-                var action = _client.GetRequirement(actionType);
-                action.Execute(sender, list);
+                requirement.Execute(sender, list);
             }
         }
     }

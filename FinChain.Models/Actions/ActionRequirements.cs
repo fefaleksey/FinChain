@@ -1,22 +1,21 @@
 using System.Collections.Generic;
-using FinChain.Models.Actions;
 
-namespace Actions
+namespace FinChain.Models.Actions
 {
     public class ActionRequirements : IActionRequirements
     {
-        private List<List<ActionType>> Requirements { get; set; }
+        private List<List<IAction>> Requirements { get; set; }
 
         public ActionRequirements()
         {
-            Requirements = new List<List<ActionType>>();
+            Requirements = new List<List<IAction>>();
         }
 
-        public void AddAction(ActionType action, int step)
+        public void AddAction(IAction action, int step)
         {
             while (Requirements.Count <= step)
             {
-                Requirements.Add(new List<ActionType>());
+                Requirements.Add(new List<IAction>());
             }
             
             Requirements[step].Add(action);
@@ -41,11 +40,11 @@ namespace Actions
             Requirements.Clear();
         }
 
-        public List<ActionType> PeekActions() => Requirements[0];
+        public List<IAction> PeekActions() => Requirements[0];
         
-        public List<List<ActionType>> GetAllRequirements() => Requirements;
+        public List<List<IAction>> GetAllRequirements() => Requirements;
 
-        public List<ActionType> DequeueActions()
+        public List<IAction> DequeueActions()
         {
             var actions = PeekActions();
             const int step = 0;

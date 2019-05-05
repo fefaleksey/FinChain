@@ -43,12 +43,6 @@ namespace Actions
             }
         }
 
-        public void AddRequirement(ActionType requirement, int step) => ActionRequirements.AddAction(requirement, step);
-
-        public void RemoveRequirement(int step, int position) => ActionRequirements.RemoveAction(step, position);
-
-        public IActionRequirements GetRequirements() => ActionRequirements;
-
         private ActionExecutionResult ChangePercent(byte newValue)
         {
             if (newValue > 100)
