@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Net.Http;
 using Actions;
 using FinChain.Models.Actions;
+using NotaryNode.Client;
 using RuleChain.Controller;
 using RuleChain.Models;
 using RuleChain.Models.Enums;
@@ -27,10 +29,18 @@ namespace RuleChain.Tests
             var block = new RuleBlock(new List<RuleTransaction> {transaction}, _controller.GetLastBlockHash());
             var requirements = _chain.GetRequirements(ActionType.TransferFromPersonToPerson);
             Assert.Null(requirements);
-//            Assert.Null(_chain.GetRequirements(ActionType.TransferFromPersonToPerson));
+            
             _chain.CommitBlock(block);
             requirements = _chain.GetRequirements(ActionType.TransferFromPersonToPerson);
-//            Assert.NotNull(_chain.GetRequirements(ActionType.TransferFromPersonToPerson));
+            Assert.Empty(requirements.GetAllRequirements());
+            
+            var builder = new ActionBuilder(_controller, new NotaryNodeClient(new HttpClient()));
+            transaction = RuleTransaction.CreateAddRequirementsTransaction(ActionType.TransferFromPersonToPerson,
+                builder.Create(ActionType.PayTax, "http://localhost:5000"),
+                0);
+            transaction.Status = TransactionStatus.Valid;
+            block = new RuleBlock(new List<RuleTransaction> {transaction}, _controller.GetLastBlockHash());
+            _chain.CommitBlock(block);
             Assert.NotEmpty(requirements.GetAllRequirements());
         }
     }
