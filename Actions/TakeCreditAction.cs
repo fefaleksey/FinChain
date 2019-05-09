@@ -15,40 +15,14 @@ namespace Actions
 
         public List<AccountType> ExecuteOrder { get; }
         private const ActionType Type = ActionType.TakeCredit;
-        private readonly IRuleChainController _controller;
-        private readonly INotaryNodeClient _client;
         private IActionRequirements ActionRequirements { get; }
 
-        public TakeCreditAction(IRuleChainController controller, INotaryNodeClient client)
+        public TakeCreditAction()
         {
-            _controller = controller;
-            _client = client;
-            ActionRequirements = _client.GetRequirements(Type);
-            AccessToDeploy = new List<AccountType>()
-            {
-                AccountType.Organization
-            };
             throw new NotImplementedException();
-            // TODO: Configure execute order
-            ExecuteOrder = new List<AccountType> {AccountType.Person};
         }
 
         public ActionExecutionResult Execute(Account sender, params object[] list)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddRequirement(ActionType requirement, int step)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveRequirement(int step, int position)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IActionRequirements GetRequirements()
         {
             throw new NotImplementedException();
         }

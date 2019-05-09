@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
+using Microsoft.Extensions.Configuration;
 using NotaryNode.Client;
 using RuleChain.Controller;
 
@@ -13,24 +14,20 @@ namespace Actions
         public List<AccountType> AccessToDeploy { get; }
 
         private const ActionType Type = ActionType.TransferFromPersonToPerson;
-        private IActionRequirements ActionRequirements { get; }
-        private readonly IRuleChainController _controller;
-        private readonly INotaryNodeClient _client;
+        private readonly IActionRequirements _actionRequirements;
 
 
-        public TransferFromPersonToPersonAction(IRuleChainController controller, INotaryNodeClient client)
+        public TransferFromPersonToPersonAction(IActionRequirements requirements)
         {
-            _controller = controller;
-            ActionRequirements = _client.GetRequirements(Type);
-            _client = client;
+            _actionRequirements = requirements;
             AccessToDeploy = new List<AccountType>()
             {
                 AccountType.Person
             };
         }
-        
+
         public ActionExecutionResult Execute(Account sender, params object[] list)
-        {   
+        {
             var receiver = (Account) list[0];
             var amount = (int) list[1];
 
@@ -49,14 +46,14 @@ namespace Actions
             IsActive = false;
             return result;
         }
-        
+
         private ActionExecutionResult TransferFromPersonToPerson(Account sender, Account receiver, int amount)
         {
             if (sender.Balance < amount)
             {
                 return ActionExecutionResult.Failed;
             }
-            
+
             sender.Balance -= amount;
             receiver.Balance += amount;
             return ActionExecutionResult.Success;
@@ -64,7 +61,7 @@ namespace Actions
 
         private void ExecuteRequirements(Account sender, params object[] list)
         {
-            var requirements = ActionRequirements.DequeueActions();
+            var requirements = _actionRequirements.DequeueActions();
             foreach (var requirement in requirements)
             {
                 requirement.Execute(sender, list);

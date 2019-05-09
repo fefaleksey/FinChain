@@ -16,13 +16,13 @@ namespace Actions
             _client = client;
         }
 
-        public IAction Create(ActionType type)
+        public IAction Create(ActionType type, string notaryNodeUri)
         {
             switch (type)
             {
                 case ActionType.TransferFromPersonToPerson:
                 {
-                    return CreateTransferFromPersonToPersonAction();
+                    return CreateTransferFromPersonToPersonAction(notaryNodeUri);
                 }
                 case ActionType.PayTax:
                 {
@@ -35,9 +35,11 @@ namespace Actions
             }
         }
 
-        private IAction CreateTransferFromPersonToPersonAction()
+        private IAction CreateTransferFromPersonToPersonAction(string notaryNodeUri)
         {
-            return new TransferFromPersonToPersonAction(_controller, _client);
+            var task = _client.GetRequirements(notaryNodeUri, ActionType.TransferFromPersonToPerson);
+            var actionRequirements = task.Result;
+            return new TransferFromPersonToPersonAction(actionRequirements);
         }
 
         private IAction CreatePayTaxAction()
