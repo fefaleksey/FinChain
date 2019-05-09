@@ -10,25 +10,19 @@ namespace RuleChain.Models
         public TransactionStatus Status { get; set; }
         public TransactionType Type { get; }
         public ActionType Action { get; }
-
         public IAction Requirement { get; }
-//        public IActionRequirements Requirements { get; }
-
-//        public object[] Params { get; }
         public int Step { get; }
         public int Position { get; }
 
         private RuleTransaction()
         {
-
         }
-
+        
         private RuleTransaction(TransactionType type, ActionType action, IAction requirement, int step, int position)
         {
             Type = type;
             Action = action;
             Requirement = requirement;
-//            Requirements = requirements;
             Step = step;
             Position = position;
             Status = TransactionStatus.Created;
@@ -48,8 +42,7 @@ namespace RuleChain.Models
             return transaction;
         }
 
-        public static RuleTransaction CreateAddRequirementsTransaction(ActionType action,
-            IAction requirement, int step)
+        public static RuleTransaction CreateAddRequirementsTransaction(ActionType action, IAction requirement, int step)
         {
             var transaction = new RuleTransaction(TransactionType.AddRequirement, action, requirement, step, 0);
             return transaction;
