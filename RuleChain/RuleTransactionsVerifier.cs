@@ -1,13 +1,14 @@
 using RuleChain.Models;
+using RuleChain.Models.Enums;
 
 namespace RuleChain
 {
-    static class RuleTransactionsVerifier
+    public static class RuleTransactionsVerifier
     {
-        public static bool Verify(RuleTransaction transaction)
+        // TODO: implement
+        public static void Verify(RuleTransaction transaction)
         {
-            return true;
+            transaction.Status = TransactionStatus.Valid;
         }
-        
     }
 }
