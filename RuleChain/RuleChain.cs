@@ -7,9 +7,9 @@ namespace RuleChain
 {
     public class RuleChain : IRuleChain
     {
-        private readonly IState _state = new State.State();
         public RuleBlock Genesis { get; }
-
+        
+        private readonly IState _state = new State.State();
         private readonly List<RuleBlock> _chain = new List<RuleBlock>();
         
         public RuleChain()
@@ -25,7 +25,7 @@ namespace RuleChain
         }
 
         public IActionRequirements GetRequirements(ActionType type) => _state.GetRequirements(type);
-        
+
         public RuleBlock GetLastBlock()
         {
             return _chain[_chain.Count - 1];
