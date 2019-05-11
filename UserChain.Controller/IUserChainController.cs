@@ -4,7 +4,7 @@ namespace UserChain.Controller
 {
     public interface IUserChainController
     {
-        void CommitBlock(Block block);
+        void CommitBlock(UserChainBlock userChainBlock);
 
         int GetLastBlockHash();
     }

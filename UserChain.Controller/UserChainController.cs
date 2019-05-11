@@ -10,7 +10,7 @@ namespace UserChain.Controller
             _chain = chain;
         }
 
-        public void CommitBlock(Block block) => _chain.CommitBlock(block);
+        public void CommitBlock(UserChainBlock userChainBlock) => _chain.CommitBlock(userChainBlock);
 
         public int GetLastBlockHash()
         {
