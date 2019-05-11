@@ -5,19 +5,24 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RuleChain;
 using RuleChain.Controller;
+using UserChain.Controller;
 
 namespace NotaryNode
 {
     public class Startup
     {
-        private readonly IRuleChain _chain;
-        private readonly IRuleChainController _controller;
+        private readonly IRuleChainController _ruleChainController;
+        private readonly IUserChainController _userChainController;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            _chain = new global::RuleChain.RuleChain();
-            _controller = new RuleChainController(_chain);
+            
+            var ruleChain = new global::RuleChain.RuleChain();
+            _ruleChainController = new RuleChainController(ruleChain);
+
+            var userChain = new UserChain.UserChain();
+            _userChainController = new UserChainController(userChain);
         }
 
         public IConfiguration Configuration { get; }
@@ -27,7 +32,8 @@ namespace NotaryNode
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddSingleton<IRuleChainController>(_controller)
+            services.AddSingleton<IRuleChainController>(_ruleChainController)
+                .AddSingleton<IUserChainController>(_userChainController)
                 .AddSingleton<IConfiguration>(Configuration);
         }
 
