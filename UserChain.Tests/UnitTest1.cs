@@ -1,4 +1,3 @@
-using System;
 using UserChain.Controller;
 using Xunit;
 
@@ -20,7 +19,6 @@ namespace UserChain.Tests
         public void CompileTest()
         {
             var code = System.IO.File.ReadAllText("../../../HelloWorld.cs");
-            _state.Blyat(code);
         }
     }
 }
