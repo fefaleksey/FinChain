@@ -50,7 +50,7 @@ namespace UserChain
             var options = new CSharpCompilationOptions(
                 OutputKind.DynamicallyLinkedLibrary,
                 optimizationLevel: OptimizationLevel.Debug,
-                allowUnsafe: true);
+                allowUnsafe: false);
 
             //creating the compilation
             var compilation = CSharpCompilation.Create(Path.GetRandomFileName(), options: options);
