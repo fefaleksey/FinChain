@@ -1,9 +1,6 @@
 using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
-using Microsoft.Extensions.Configuration;
-using NotaryNode.Client;
-using RuleChain.Controller;
 
 namespace Actions
 {
@@ -28,8 +25,6 @@ namespace Actions
 
         public ActionExecutionResult Execute(Account sender, params object[] list)
         {
-            dynamic a = null;
-            a.Huy();
             var receiver = (Account) list[0];
             var amount = (int) list[1];
 

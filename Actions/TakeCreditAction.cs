@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
-using NotaryNode.Client;
-using RuleChain.Controller;
 
 namespace Actions
 {
