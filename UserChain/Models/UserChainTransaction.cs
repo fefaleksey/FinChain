@@ -1,6 +1,5 @@
 ﻿using System;
 using FinChain.Models.Accounts;
-using FinChain.Models.Actions;
 using UserChain.Models.Enums;
 
 namespace UserChain.Models
@@ -8,23 +7,35 @@ namespace UserChain.Models
     public class UserChainTransaction
     {
         public DateTime Time { get; }
+        public UserChainTransactionType Type { get; }
         public TransactionStatus Status { get; }
         public Account Sender { get; }
+        public Guid? ContractId { get; }
         public object[] Params { get; }
+        public string Code { get; }
 
-        public ActionId ContractToCall { get; }
-
-        public TransactionType Type { get; }
-
-        public UserChainTransaction(Account sender, ActionId contractToCall, TransactionType type,
-            params object[] @params)
+        private UserChainTransaction(Account sender, Guid? contractId, UserChainTransactionType type,
+            string code, params object[] @params)
         {
             Sender = sender;
-            ContractToCall = contractToCall;
+            ContractId = contractId;
             Type = type;
+            Code = code;
             Params = @params;
             Time = DateTime.UtcNow;
             Status = TransactionStatus.Created;
+        }
+
+        public static UserChainTransaction CreateDeployTransaction(Account sender, Guid? contractId, string code)
+        {
+            return new UserChainTransaction(sender, contractId, UserChainTransactionType.Deploy, code, null);
+        }
+
+        public static UserChainTransaction CreateCallTransaction(Account sender, Guid? contractId,
+            params object[] @params)
+        {
+            return new UserChainTransaction(sender, contractId, UserChainTransactionType.CallContractFunction,
+                null, @params);
         }
     }
 }
