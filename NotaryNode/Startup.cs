@@ -3,14 +3,21 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RuleChain;
+using RuleChain.Controller;
 
 namespace NotaryNode
 {
     public class Startup
     {
+        private readonly IRuleChain _chain;
+        private readonly IRuleChainController _controller;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _chain = new global::RuleChain.RuleChain();
+            _controller = new RuleChainController(_chain);
         }
 
         public IConfiguration Configuration { get; }
@@ -19,6 +26,9 @@ namespace NotaryNode
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSingleton<IRuleChainController>(_controller)
+                .AddSingleton<IConfiguration>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
