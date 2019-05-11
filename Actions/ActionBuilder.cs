@@ -39,7 +39,7 @@ namespace Actions
         {
             var task = _client.GetRequirements(notaryNodeUri, ActionType.TransferFromPersonToPerson);
             var actionRequirements = task.Result;
-            return new TransferFromPersonToPersonAction(actionRequirements);
+            return new TransferMoneyAction(actionRequirements);
         }
 
         private IAction CreatePayTaxAction()

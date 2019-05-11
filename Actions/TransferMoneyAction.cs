@@ -7,7 +7,7 @@ using RuleChain.Controller;
 
 namespace Actions
 {
-    public class TransferFromPersonToPersonAction : IAction
+    public class TransferMoneyAction : IAction
     {
         public ActionId Id { get; } = new ActionId();
         public bool IsActive { get; private set; }
@@ -17,7 +17,7 @@ namespace Actions
         private readonly IActionRequirements _actionRequirements;
 
 
-        public TransferFromPersonToPersonAction(IActionRequirements requirements)
+        public TransferMoneyAction(IActionRequirements requirements)
         {
             _actionRequirements = requirements;
             AccessToDeploy = new List<AccountType>()
@@ -28,6 +28,8 @@ namespace Actions
 
         public ActionExecutionResult Execute(Account sender, params object[] list)
         {
+            dynamic a = null;
+            a.Huy();
             var receiver = (Account) list[0];
             var amount = (int) list[1];
 
