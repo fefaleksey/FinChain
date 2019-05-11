@@ -4,6 +4,6 @@ namespace UserChain
 {
     interface IState
     {
-        void UpdateState(Block block);
+        void UpdateState(UserChainBlock userChainBlock);
     }
 }

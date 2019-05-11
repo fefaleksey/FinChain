@@ -6,23 +6,23 @@ namespace UserChain
     public class UserChain : IUserChain
     {
         private readonly IState _state = new State();
-        public Block Genesis { get; }
+        public UserChainBlock Genesis { get; }
 
-        private readonly List<Block> _chain = new List<Block>();
+        private readonly List<UserChainBlock> _chain = new List<UserChainBlock>();
         
         public UserChain()
         {
-            Genesis = new Block(null, 0);
+            Genesis = new UserChainBlock(null, 0);
             _chain.Add(Genesis);
         }
 
-        public void CommitBlock(Block block)
+        public void CommitBlock(UserChainBlock userChainBlock)
         {
-            _chain.Add(block);
-            _state.UpdateState(block);
+            _chain.Add(userChainBlock);
+            _state.UpdateState(userChainBlock);
         }
         
-        public Block GetLastBlock()
+        public UserChainBlock GetLastBlock()
         {
             return _chain[_chain.Count - 1];
         }

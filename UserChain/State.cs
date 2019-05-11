@@ -19,9 +19,9 @@ namespace UserChain
         private readonly Dictionary<AccountAddress, Account> _accounts = new Dictionary<AccountAddress, Account>();
         private readonly Dictionary<Guid?, object> _contracts = new Dictionary<Guid?, object>();
 
-        public void UpdateState(Block block)
+        public void UpdateState(UserChainBlock userChainBlock)
         {
-            foreach (var transaction in block.Transactions)
+            foreach (var transaction in userChainBlock.Transactions)
             {
                 ApplyTransaction(transaction);
             }

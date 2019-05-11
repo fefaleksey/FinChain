@@ -4,8 +4,8 @@ namespace UserChain
 {
     public interface IUserChain
     {
-        Block Genesis { get; }
-        void CommitBlock(Block block);
-        Block GetLastBlock();
+        UserChainBlock Genesis { get; }
+        void CommitBlock(UserChainBlock userChainBlock);
+        UserChainBlock GetLastBlock();
     }
 }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace UserChain.Models
 {
-    public class Block
+    public class UserChainBlock
     {
         public DateTime CreationTime { get; }
         public List<UserChainTransaction> Transactions { get; }
         public int PreviousBlockHash { get; }
         public int Hash { get; private set; }
 
-        public Block(List<UserChainTransaction> transactions, int previousBlockHash)
+        public UserChainBlock(List<UserChainTransaction> transactions, int previousBlockHash)
         {
             Transactions = transactions;
             CreationTime = DateTime.UtcNow;
