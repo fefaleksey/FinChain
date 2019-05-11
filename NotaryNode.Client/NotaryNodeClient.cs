@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using FinChain.Models;
 using FinChain.Models.Actions;
 using Newtonsoft.Json;
@@ -53,9 +54,13 @@ namespace NotaryNode.Client
             }
         }
 
-        public IActionRequirements GetRequirements(ActionType type)
+        // TODO: implement
+        public async Task<IActionRequirements> GetRequirements(string nodeUrl, ActionType action)
         {
-            throw new NotImplementedException();
+            var lol = await _httpClient.GetAsync($"{nodeUrl}/api/transactions/getRequirements/?action={action}");
+            var kek = await lol.Content.ReadAsStringAsync();
+            var requirements = JsonConvert.DeserializeObject<ActionRequirements>(kek);
+            return requirements;
         }
     }
 }
