@@ -9,10 +9,10 @@ namespace NotaryNode.Controllers
 {
     [Route("api/[controller]")]    
     [ApiController]
-    public class TransactionsController : ControllerBase
+    public class RuleChainApiGatewayController : ControllerBase
     {
         private readonly IRuleChainController _controller;
-        public TransactionsController(IRuleChainController controller)
+        public RuleChainApiGatewayController(IRuleChainController controller)
         {
             _controller = controller;
         }

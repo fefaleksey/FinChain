@@ -16,6 +16,8 @@
       <ProjectReference Include="..\FinChain.Models\FinChain.Models.csproj" />
       <ProjectReference Include="..\RuleChain.Controller\RuleChain.Controller.csproj" />
       <ProjectReference Include="..\RuleChain\RuleChain.csproj" />
+      <ProjectReference Include="..\UserChain.Controller\UserChain.Controller.csproj" />
+      <ProjectReference Include="..\UserChain\UserChain.csproj" />
     </ItemGroup>
 
 </Project>
