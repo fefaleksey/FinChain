@@ -1,14 +1,15 @@
 using System;
 
+// ReSharper disable once CheckNamespace
 namespace First
 {
     public class Contract
     {
-        private int counter = 0;
+        private int _counter = 0;
         public void Execute()
         {
-            counter++;
-            Console.WriteLine(counter + " Welcome to C# world");
+            _counter++;
+            Console.WriteLine(_counter + " Welcome to C# world");
 //            Console.ReadLine();
         }
     }
