@@ -61,21 +61,15 @@ namespace UserChain
             //getting the local path of the assemblies
             var assemblyPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
             List<MetadataReference> references = new List<MetadataReference>();
+            
             //adding the core dll containing object and other classes
             references.Add(MetadataReference.CreateFromFile(Path.Combine(assemblyPath, "System.Private.CoreLib.dll")));
             references.Add(MetadataReference.CreateFromFile(Path.Combine(assemblyPath, "mscorlib.dll")));
             references.Add(MetadataReference.CreateFromFile(Path.Combine(assemblyPath, "System.Console.dll")));
             references.Add(MetadataReference.CreateFromFile(Path.Combine(assemblyPath, "System.Runtime.dll")));
-            //gathering all using directives in the compilation
-            var usings = compilation.SyntaxTrees.Select(tree => tree.GetRoot()
-                .DescendantNodes().OfType<UsingDirectiveSyntax>()).SelectMany(s => s).ToArray();
-
-            //for each using directive add a metadatareference to it
-            foreach (var u in usings)
-            {
-                references.Add(
-                    MetadataReference.CreateFromFile(Path.Combine(assemblyPath, u.Name.ToString() + ".dll")));
-            }
+            references.Add(MetadataReference.CreateFromFile(Path.Combine(assemblyPath, "System.dll")));
+            assemblyPath = typeof(FinChain.Models.Accounts.Account).Assembly.Location;
+            references.Add(MetadataReference.CreateFromFile(assemblyPath));
 
             //add the reference list to the compilation
             compilation = compilation.AddReferences(references);
@@ -105,8 +99,6 @@ namespace UserChain
                     
                     var type = assembly.GetType("First.Contract");
                     var obj = Activator.CreateInstance(type) as dynamic;
-//                    obj.Execute();
-
                     _contracts.Add(transaction.ContractId, obj);
                 }
             }
