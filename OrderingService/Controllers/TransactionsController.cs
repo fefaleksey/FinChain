@@ -16,8 +16,7 @@ namespace OrderingService.Controllers
             _transactionsPool = transactionsPool;
         }
         
-        // POST api/values
-        [HttpPost, Route("add")]
+        [HttpPost, Route("addTransaction")]
         public void AddTransaction([FromBody] UserChainTransaction transaction)
         {
             UserChainVerifier.Verify(transaction);
