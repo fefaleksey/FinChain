@@ -26,8 +26,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserChain.Tests", "UserChai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingService", "OrderingService\OrderingService.csproj", "{B1497EAA-5DB4-4358-B8C3-A0BBF3173626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractDependencies", "ContractDependencies\ContractDependencies.csproj", "{1BF53DB6-0A27-4F74-AEEA-A5E788976821}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,9 +84,5 @@ Global
 		{B1497EAA-5DB4-4358-B8C3-A0BBF3173626}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1497EAA-5DB4-4358-B8C3-A0BBF3173626}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1497EAA-5DB4-4358-B8C3-A0BBF3173626}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BF53DB6-0A27-4F74-AEEA-A5E788976821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BF53DB6-0A27-4F74-AEEA-A5E788976821}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BF53DB6-0A27-4F74-AEEA-A5E788976821}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BF53DB6-0A27-4F74-AEEA-A5E788976821}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
