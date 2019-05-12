@@ -1,4 +1,4 @@
-﻿namespace RuleChain.Models.Enums
+﻿namespace FinChain.Models
 {
     public enum TransactionStatus
     {
