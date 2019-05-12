@@ -1,12 +1,11 @@
-﻿namespace UserChain
+﻿using UserChain.Models;
+
+namespace UserChain
 {
     public interface IUserChain
     {
-        void AddTransactionToPool();
-    }
-
-    public interface ITransaction
-    {
-        
+        UserChainBlock Genesis { get; }
+        void CommitBlock(UserChainBlock userChainBlock);
+        UserChainBlock GetLastBlock();
     }
 }

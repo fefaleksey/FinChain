@@ -1,5 +1,6 @@
 using System;
 using FinChain.Models.Actions;
+using NotaryNode.Client;
 using RuleChain.Controller;
 
 namespace Actions
@@ -7,19 +8,21 @@ namespace Actions
     public class ActionBuilder
     {
         private readonly IRuleChainController _controller;
-
-        public ActionBuilder(IRuleChainController controller)
+        private readonly INotaryNodeClient _client;
+        
+        public ActionBuilder(IRuleChainController controller, INotaryNodeClient client)
         {
             _controller = controller;
+            _client = client;
         }
 
-        public IAction Create(ActionType type)
+        public IAction Create(ActionType type, string notaryNodeUri)
         {
             switch (type)
             {
                 case ActionType.TransferFromPersonToPerson:
                 {
-                    return CreateTransferFromPersonToPersonAction();
+                    return CreateTransferFromPersonToPersonAction(notaryNodeUri);
                 }
                 case ActionType.PayTax:
                 {
@@ -32,9 +35,11 @@ namespace Actions
             }
         }
 
-        private IAction CreateTransferFromPersonToPersonAction()
+        private IAction CreateTransferFromPersonToPersonAction(string notaryNodeUri)
         {
-            return new TransferFromPersonToPersonAction(_controller);
+            var task = _client.GetRequirements(notaryNodeUri, ActionType.TransferFromPersonToPerson);
+            var actionRequirements = task.Result;
+            return new TransferMoneyAction(actionRequirements);
         }
 
         private IAction CreatePayTaxAction()

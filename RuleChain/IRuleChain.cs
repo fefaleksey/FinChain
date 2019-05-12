@@ -5,9 +5,9 @@ namespace RuleChain
 {
     public interface IRuleChain
     {
-        IBlock Genesis { get; }
-        void CommitBlock(IBlock block);
+        RuleBlock Genesis { get; }
+        void CommitBlock(RuleBlock block);
         IActionRequirements GetRequirements(ActionType type);
-        IBlock GetLastBlock();
+        RuleBlock GetLastBlock();
     }
 }

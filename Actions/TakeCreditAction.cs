@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using FinChain.Models.Accounts;
 using FinChain.Models.Actions;
-using RuleChain.Controller;
 
 namespace Actions
 {
@@ -10,33 +9,28 @@ namespace Actions
     {
         public ActionId Id { get; }
         public bool IsActive { get; private set; }
+        public List<AccountType> AccessToDeploy { get; }
 
         public List<AccountType> ExecuteOrder { get; }
         private const ActionType Type = ActionType.TakeCredit;
-        private readonly IRuleChainController _controller;
+        private IActionRequirements ActionRequirements { get; }
 
-        public TakeCreditAction(IRuleChainController controller)
+        public TakeCreditAction()
         {
-            _controller = controller;
             throw new NotImplementedException();
-            // TODO: Configure execute order
-            ExecuteOrder = new List<AccountType> {AccountType.Person};
         }
-        
+
         public ActionExecutionResult Execute(Account sender, params object[] list)
-        {   
+        {
             throw new NotImplementedException();
         }
 
-        private void ExecuteRequirements(Account sender)
+        private void ExecuteRequirements(Account sender, params object[] list)
         {
-            var requirements = _controller.GetRequirements(Type);
-            var actionTypes = requirements.PeekActions();
-            var builder = new ActionBuilder(_controller);
-            foreach (var actionType in actionTypes)
+            var requirements = ActionRequirements.DequeueActions();
+            foreach (var requirement in requirements)
             {
-                var action = builder.Create(actionType);
-                action.Execute(sender);
+                requirement.Execute(sender, list);
             }
         }
     }

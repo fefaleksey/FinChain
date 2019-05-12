@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -14,7 +14,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FinChain.Models\FinChain.Models.csproj" />
+      <ProjectReference Include="..\RuleChain.Controller\RuleChain.Controller.csproj" />
       <ProjectReference Include="..\RuleChain\RuleChain.csproj" />
+      <ProjectReference Include="..\UserChain.Controller\UserChain.Controller.csproj" />
+      <ProjectReference Include="..\UserChain\UserChain.csproj" />
     </ItemGroup>
 
 </Project>

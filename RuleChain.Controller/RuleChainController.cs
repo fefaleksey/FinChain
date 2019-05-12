@@ -12,7 +12,7 @@ namespace RuleChain.Controller
             _chain = chain;
         }
 
-        public void CommitBlock(IBlock block) => _chain.CommitBlock(block);
+        public void CommitBlock(RuleBlock block) => _chain.CommitBlock(block);
 
         public IActionRequirements GetRequirements(ActionType type) => _chain.GetRequirements(type);
         public int GetLastBlockHash() => _chain.GetLastBlock().Hash;
