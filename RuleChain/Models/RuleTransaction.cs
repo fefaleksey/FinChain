@@ -1,4 +1,5 @@
 ﻿using System;
+using FinChain.Models;
 using FinChain.Models.Actions;
 using RuleChain.Models.Enums;
 

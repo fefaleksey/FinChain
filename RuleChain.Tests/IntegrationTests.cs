@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using Actions;
+using FinChain.Models;
 using FinChain.Models.Actions;
 using NotaryNode.Client;
 using RuleChain.Controller;
 using RuleChain.Models;
-using RuleChain.Models.Enums;
 using Xunit;
 
 namespace RuleChain.Tests

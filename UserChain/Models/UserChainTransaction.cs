@@ -1,4 +1,5 @@
 ﻿using System;
+using FinChain.Models;
 using FinChain.Models.Accounts;
 using UserChain.Models.Enums;
 
@@ -8,7 +9,7 @@ namespace UserChain.Models
     {
         public DateTime Time { get; }
         public UserChainTransactionType Type { get; }
-        public TransactionStatus Status { get; }
+        public TransactionStatus Status { get; set; }
         public Account Sender { get; }
         public Guid? ContractId { get; }
         public object[] Params { get; }

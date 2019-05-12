@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FinChain.Models;
 using FinChain.Models.Actions;
 using RuleChain.Models;
 using RuleChain.Models.Enums;

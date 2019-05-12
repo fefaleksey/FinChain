@@ -1,5 +1,5 @@
+using FinChain.Models;
 using RuleChain.Models;
-using RuleChain.Models.Enums;
 
 namespace RuleChain
 {
