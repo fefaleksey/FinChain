@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FinChain.Models.Accounts;
 using UserChain.Models;
 
 namespace UserChain
@@ -21,7 +22,12 @@ namespace UserChain
             _chain.Add(userChainBlock);
             _state.UpdateState(userChainBlock);
         }
-        
+
+        public bool AddAccount(Account account)
+        {
+            return _state.AddAccount(account);
+        }
+
         public UserChainBlock GetLastBlock()
         {
             return _chain[_chain.Count - 1];

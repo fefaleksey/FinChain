@@ -1,4 +1,5 @@
-﻿using UserChain.Models;
+﻿using FinChain.Models.Accounts;
+using UserChain.Models;
 
 namespace UserChain.Controller
 {
@@ -16,6 +17,11 @@ namespace UserChain.Controller
         {
             var block = _chain.GetLastBlock();
             return block.Hash;
+        }
+        
+        public bool AddAccount(Account account)
+        {
+            return _chain.AddAccount(account);
         }
     }
 }

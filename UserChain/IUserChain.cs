@@ -1,4 +1,5 @@
-﻿using UserChain.Models;
+﻿using FinChain.Models.Accounts;
+using UserChain.Models;
 
 namespace UserChain
 {
@@ -6,6 +7,7 @@ namespace UserChain
     {
         UserChainBlock Genesis { get; }
         void CommitBlock(UserChainBlock userChainBlock);
+        bool AddAccount(Account account);
         UserChainBlock GetLastBlock();
     }
 }

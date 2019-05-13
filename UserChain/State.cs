@@ -27,6 +27,16 @@ namespace UserChain
             }
         }
 
+        public bool AddAccount(Account account)
+        {
+            if (_accounts.ContainsKey(account.AccountAddress))
+            {
+                return false;
+            }
+            _accounts.Add(account.AccountAddress, account);
+            return true;
+        }
+
         private void ApplyTransaction(UserChainTransaction transaction)
         {
             switch (transaction.Type)
